@@ -1,0 +1,45 @@
+### http://localhost:8080/swagger-ui/#/
+
+### 1. List Persons
+GET http://localhost:8080/persons
+accept: application/json
+
+### 2.1 Create an Aged Persons
+POST http://localhost:8080/persons
+accept: application/json
+content-type: application/json
+
+{
+  "person": {
+    "name": "John Quark",
+    "age": 20
+  }
+}
+
+### 2.2 Create an Underaged Persons
+POST http://localhost:8080/persons
+accept: application/json
+content-type: application/json
+
+{
+  "person": {
+    "name": "Jenny Quark",
+    "age": 15
+  }
+}
+
+### 4. View process instance details using the returned process UUID - Underaged only
+GET http://localhost:8080/persons/8dfe8ada-10b2-4dca-bb27-5535717596db/tasks
+accept: application/json
+
+### 5. View child human tasks
+GET http://localhost:8080/persons/8dfe8ada-10b2-4dca-bb27-5535717596db/ChildrenHandling/14af0793-9490-4a83-829f-ecb037ce95da
+accept: application/json
+
+### 6. Complete task
+POST http://localhost:8080/persons/8dfe8ada-10b2-4dca-bb27-5535717596db/ChildrenHandling/14af0793-9490-4a83-829f-ecb037ce95da
+accept: application/json
+content-type: application/json
+
+{
+}
