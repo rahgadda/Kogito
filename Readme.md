@@ -74,8 +74,8 @@
 
 ## Modules
 - [Modelers](./03-Modules/01-modeler.md)
-- BPMN
 - DMN
+- BPMN
 
 ---
 
