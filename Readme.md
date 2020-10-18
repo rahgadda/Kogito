@@ -23,7 +23,7 @@
 
 - Kogito is designed to run and scale on a cloud infrastructure.
 - We can use Kogito with the latest cloud-based technologies, such as Quarkus, Knative, and Apache Kafka.
-![](01-Images\01-Architecture.png)
+![](./01-Images/01-Architecture.png)
 - The primary Java frameworks that Kogito supports are **Quarkus (recommended)** and **Spring Boot**. 
 
 ---
