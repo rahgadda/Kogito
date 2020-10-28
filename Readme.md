@@ -40,12 +40,24 @@
     - [Infinispan](https://infinispan.org/)
     - [Strimzi](https://strimzi.io/)
     - [Keycloak](https://www.keycloak.org/)
-    - Kogito Data Index
-    - Kogito Jobs Service
-    - Kogito Trusty Service
-    - Kogito Explainability Service
-    - Kogito Management Console
-    - Prometheus
+    - [Prometheus](https://prometheus.io/)
+    - [Grafana](https://grafana.com/)
+    - [All Kiegroup Service](https://quay.io/organization/kiegroup)
+    - [Kogito Management Console](https://quay.io/repository/kiegroup/kogito-management-console): It is a user interface for viewing the state of all available Kogito services and managing process instances.
+    - [Kogito Data Index](https://quay.io/repository/kiegroup/kogito-data-index): 
+      - It consumes the Kafka cloud events and index this information into the storage service. 
+      - It is a Quarkus application based on VertX and reactive messaging that exposes a GraphQL endpoint.
+    - [Kogito Jobs Service](https://quay.io/repository/kiegroup/kogito-jobs-service)
+      - It is responsible for scheduling jobs that aim to be fired at a given time. 
+      - The service does not execute the job itself, it triggers a callback that could be an HTTP request on a given endpoint specified on the job request, or any other callback that could be supported by the service.
+      - It is a Quarkus application based on VertX.
+    - [Kogito Trusty Service](https://quay.io/repository/kiegroup/kogito-trusty)
+      - It stores all Kogito tracing events related to decisions made in Kogito services. 
+      - It uses the Kafka cloud events from Kogito services, and then processes the tracing events and stores the data in the storage service.
+    - [Kogito Trusty UI](https://quay.io/repository/kiegroup/kogito-trusty-ui)    
+    - [Kogito Explainability Service](https://quay.io/repository/kiegroup/kogito-explainability)
+      - It is a complementary service for the Trusty Service to identify why the decision were made.
+    - [Kogito Task Console](https://quay.io/repository/kiegroup/kogito-task-console)
   - Create Quarkus [project](./02-MyDev/01-Person/person) using vscode plugin with below dependencies
     - quarkus-smallrye-openapi
     - kogito-quarkus
