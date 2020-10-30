@@ -46,3 +46,4 @@
 ## Appendix
 - References
   - [OMG DMN](https://www.omg.org/spec/DMN)
+  - [Examples](https://github.com/kiegroup/drools/tree/master/kie-dmn/kie-dmn-core/src/test/resources/org/kie/dmn/core)
