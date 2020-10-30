@@ -96,4 +96,3 @@ Below are details of building blocks of Kogito
 - References
   - [Kogito Documentation](https://docs.jboss.org/kogito/release/latest/html_single/#con-kogito-automation_kogito-docs)
   - [Kogito Examples](https://github.com/kiegroup/kogito-examples)
-  - [DMN 1.2 OMG Specification](https://www.omg.org/spec/DMN/1.2/PDF)
