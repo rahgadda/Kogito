@@ -1,15 +1,43 @@
 # Decision Model and Notation - DMN
 
-## Overview
+## History
+- Around 2000, process automation was based on proprietary software and this lead to no standardization.
+- Business requirements were created in a combination of **text documents** and **proprietary modeling tools** included in the runtime.
+- Five years later we had **BPMN 1.x**, a process modeling notation standard widely adopted by business users.
+  - BPMN 1.x was not executable.
+  - It had to be translated into some other language by programmers for execution.
+  - BPM vendors used execution language called **BPEL** and convince customers that BPMN was the “Business face of SOA.”
+  - This did not work out as translate models into some other language for implementation was the basic problem.
+- Few years later we had **BPMN 2.0** released.
+  - This ensured the modeling language and the execution language to be one and the same.
+- Before DMN, decision requirements were documented using unstructured text (excel, word documents) or captured into proprietary modeling tools (BRE Rule Language).
+- DMN vs Rule Engines
+  - DRDs (Decision Requirements Diagram) are standard representation unlike proprietary Rule Family in The Decision Model.
+  - DRD extends beyond a single decision service.
+  - It can represent an extended business decision executed in multiple steps separated in time.
+  - It may even include human decisions and external decisions 
+- DMN is trying to unify standards-based modeling and execution in one step. DMN has five key elements:
+  - DRD
+  - Decision tables
+  - FEEL, a new expression language
+  - Boxed expressions, a visual representation of complex decision logic
+  - Metamodel and XML Schema
+
+![](../01-Images/03-DMNHistory.png)
+
+## Basics
 - Decision Model and Notation (DMN) is used to model decision service graphically.
 - It is a standard established by the **Object Management Group (OMG)** for describing and modeling operational decisions.
 - DMN decision model are determined by below
-  ![](../01-Images/03-DMNComponents.png)
+  ![](../01-Images/04-DMNComponents.png)
   - **DRD:** 
     - A decision requirements diagrams trace business decisions from start to finish.
+    - It provides a business-friendly picture of the dependencies of a high-level business decision on supporting information.
     - Each decision node use logic defined in DMN boxed expressions such as decision tables.
     - A DRD can represent part or all of the DMN model.
-    - DRD components and requirement connectors details are available [here](https://docs.jboss.org/kogito/release/latest/html_single/#_using_dmn_models_in_kogito_services)
+    - DRD components and requirement connectors details are available [here](https://docs.jboss.org/kogito/release/latest/html_single/#_using_dmn_models_in_kogito_services). A brief overview given below.
+    ![](../01-Images/05-ComponentList.png)
+    ![](../01-Images/06-ConnectorList.png)
   - **DRG:**
     - A Decision Requirements Graph models a domain of decision-making, showing the most important elements involved in it and the dependencies between them.
     - The elements modeled are **decisions**, **input data**, and **knowledge sources**. 
@@ -45,5 +73,5 @@
 
 ## Appendix
 - References
-  - [OMG DMN](https://www.omg.org/spec/DMN)
   - [Examples](https://github.com/kiegroup/drools/tree/master/kie-dmn/kie-dmn-core/src/test/resources/org/kie/dmn/core)
+  - [DMN From MethodAndStyle](https://methodandstyle.com/category/dmn/)
