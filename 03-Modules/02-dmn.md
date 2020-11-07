@@ -49,6 +49,9 @@
   - **Decision Table:**
     - It is a tabular representation of input/output entries.
     - It is used to indicate which output entry applies to a specific set of inputs.
+    - A hyphen(`-`) in the cell means the input is irrelevant in this rule; the cell value is true by default.
+    - Before creating decision table, please ensure all inputs are assigned to decision notation/component in DRD and output is updated in `Decision -> Properties -> Information Item -> Data Type`.
+    ![](../01-Images/10-DecisionProperties.png)
     - **Hit Policies** determine how to reach an outcome when multiple rules in a decision table match the provided input values.
     ![](../01-Images/08-HitPolicy.png)
     - **Single-hit policies:**
@@ -65,7 +68,6 @@
       - **Priority (P):**
         - Permits multiple rules to match, with different outputs.
         - Result is the output value with the highest output priority.
-        - The first value has the highest priority.
     - **Multiple-hit policies:**
       - **Rule Order (R):**
         - Permits multiple rules to match, with different outputs.
@@ -73,7 +75,7 @@
       - **Output Order (O):**
         - Permits multiple rules to match, with different outputs.
         - Return the results of all satisfied rules in decreasing output priority order.
-      - **Collect:**  It allows to define multiple rules that can match. Returns the output of multiple rules.
+      - **Collect:** It allows to define multiple rules that can match. Returns the output of multiple rules.
         ![](../01-Images/09-CollectionHitPolicy.png)
         - **Collect (C):**
           - Outputs are returned as an arbitrarily-ordered list.
@@ -85,9 +87,14 @@
           - The largest of outputs is returned.
         - **Collect Count (C#):**
           - The count of outputs is returned.
+    ![](../01-Images/11-DecisionTable.png)
   - **Boxed Expressions:**
     - **Literal:**
+      - It is a literal FEEL expression.
+      - It contains literal, constant, variables or FEEL Functions. 
     - **Context:**
+      - It is a set of variable names and values with a result value.
+      -  
     - **Relation:**
     - **Function:**
     - **Invocation:**
