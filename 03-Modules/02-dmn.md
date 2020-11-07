@@ -83,7 +83,7 @@
 
 ## Examples
 - There are two ways in creating DMN Project Template.
-  - Quarkus VSCode Plugin
+  - [Quarkus VSCode Plugin](../01-Images/07-DMNVscode.gif)
   - [Online Generator](https://code.quarkus.io/)  
 - Add below plugin
   - RESTEasy JAX-RS [Added by Default]
