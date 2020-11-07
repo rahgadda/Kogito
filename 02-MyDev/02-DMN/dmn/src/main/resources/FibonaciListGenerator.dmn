@@ -1,0 +1,136 @@
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://kiegroup.org/dmn/_D641540B-07D7-4003-A178-630AF3922988" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" id="_6EF3CF65-D841-46ED-968A-4A52727DEF58" name="FibonaciListGenerator" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://kiegroup.org/dmn/_D641540B-07D7-4003-A178-630AF3922988">
+  <dmn:extensionElements/>
+  <dmn:itemDefinition id="_02E3EF4A-AFF3-41EB-B541-C981B67D338A" name="List" isCollection="false">
+    <dmn:itemComponent id="_0933C992-CFE6-47D4-A2E7-AC80FA8F9D50" name="sno" isCollection="false">
+      <dmn:typeRef>number</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_1BB4889D-4ED4-4F49-8282-8833C99BCB36" name="name" isCollection="false">
+      <dmn:typeRef>string</dmn:typeRef>
+    </dmn:itemComponent>
+  </dmn:itemDefinition>
+  <dmn:itemDefinition id="_AA104341-F12B-4F75-9B29-3BEB77211779" name="MyList" isCollection="true">
+    <dmn:itemComponent id="_9BBAFF9F-598B-49D1-A86B-20C19F493C6F" name="List" isCollection="false">
+      <dmn:typeRef>List</dmn:typeRef>
+    </dmn:itemComponent>
+  </dmn:itemDefinition>
+  <dmn:decision id="_35AD08AA-CA5D-4C4A-AF37-42CA29F8E454" name="EachAmtzRcd">
+    <dmn:extensionElements/>
+    <dmn:variable id="_8BD2867E-70D9-469E-9F95-9B28473EFE41" name="EachAmtzRcd" typeRef="MyList"/>
+    <dmn:knowledgeRequirement id="_D9B7A60C-E586-4AFC-B2CE-D5678590A6D7">
+      <dmn:requiredKnowledge href="#_93BFFB92-D9F4-44C9-8A01-20F8856B8843"/>
+    </dmn:knowledgeRequirement>
+    <dmn:literalExpression id="_852E7740-90EC-470B-A4DE-8BA3FB6FE86C">
+      <dmn:text>FibonaciGenerator(1,[])</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:businessKnowledgeModel id="_93BFFB92-D9F4-44C9-8A01-20F8856B8843" name="FibonaciGenerator">
+    <dmn:extensionElements/>
+    <dmn:variable id="_07100F16-E0E4-465F-B7FA-554D7F7D2322" name="FibonaciGenerator" typeRef="MyList"/>
+    <dmn:encapsulatedLogic id="_5FFC4029-3A7B-4759-A3C5-9F2F54BDD5F0" kind="FEEL">
+      <dmn:formalParameter id="_BC497766-27B0-4D18-9490-FD9A75096D81" name="i" typeRef="number"/>
+      <dmn:formalParameter id="_EE898138-34A8-44CB-AB72-66FB214B6ACF" name="MyList" typeRef="MyList"/>
+      <dmn:context id="_E26AB34F-F4BE-4D93-AE48-D401198EB864">
+        <dmn:contextEntry>
+          <dmn:variable id="_D22D3E1E-E97B-4F3F-8B1E-B2935696E65E" name="j" typeRef="number"/>
+          <dmn:literalExpression id="_FFC7103C-3236-4A19-A190-61C48F5215E7">
+            <dmn:text>i + 1</dmn:text>
+          </dmn:literalExpression>
+        </dmn:contextEntry>
+        <dmn:contextEntry>
+          <dmn:variable id="_B62AF718-3B4A-4B83-A8F0-EB08151C112D" name="NextValue" typeRef="List"/>
+          <dmn:context id="_CA12B70C-104D-4FA2-8299-3ED472505648">
+            <dmn:contextEntry>
+              <dmn:variable id="_1AFB71DF-8EBF-4056-AB09-2CA0818014C1" name="sno" typeRef="number"/>
+              <dmn:literalExpression id="_554BAF3C-FC03-48F8-92AC-4AE8895BDC12">
+                <dmn:text>if i= 1
+then i
+else (i + MyList[i-1].sno)</dmn:text>
+              </dmn:literalExpression>
+            </dmn:contextEntry>
+            <dmn:contextEntry>
+              <dmn:variable id="_B40DF59B-A460-4711-8550-54F4716D34BD" name="name" typeRef="string"/>
+              <dmn:literalExpression id="_CB618218-4E37-4892-924E-D1FF41D958EC">
+                <dmn:text>"Start " + string(i)</dmn:text>
+              </dmn:literalExpression>
+            </dmn:contextEntry>
+          </dmn:context>
+        </dmn:contextEntry>
+        <dmn:contextEntry>
+          <dmn:variable id="_C72909CF-D694-4D17-A9A7-11C5254229D4" name="MergeNext" typeRef="MyList"/>
+          <dmn:literalExpression id="_D810DBFC-E8F1-4F34-B38E-71CC0C2B1B0E">
+            <dmn:text>append(MyList, NextValue)</dmn:text>
+          </dmn:literalExpression>
+        </dmn:contextEntry>
+        <dmn:contextEntry>
+          <dmn:literalExpression id="_C3971A16-BAED-4AEC-ABA4-FBCDB00188AB">
+            <dmn:text>if j &lt; 10
+then FibonaciGenerator( j, MergeNext)
+else MergeNext</dmn:text>
+          </dmn:literalExpression>
+        </dmn:contextEntry>
+      </dmn:context>
+    </dmn:encapsulatedLogic>
+  </dmn:businessKnowledgeModel>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <di:extension>
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_852E7740-90EC-470B-A4DE-8BA3FB6FE86C">
+            <kie:width>300</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_E26AB34F-F4BE-4D93-AE48-D401198EB864">
+            <kie:width>50</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>610</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_FFC7103C-3236-4A19-A190-61C48F5215E7">
+            <kie:width>610</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_CA12B70C-104D-4FA2-8299-3ED472505648">
+            <kie:width>50</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>440</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_554BAF3C-FC03-48F8-92AC-4AE8895BDC12">
+            <kie:width>440</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_CB618218-4E37-4892-924E-D1FF41D958EC">
+            <kie:width>440</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_D810DBFC-E8F1-4F34-B38E-71CC0C2B1B0E">
+            <kie:width>610</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_C3971A16-BAED-4AEC-ABA4-FBCDB00188AB">
+            <kie:width>610</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_5FFC4029-3A7B-4759-A3C5-9F2F54BDD5F0">
+            <kie:width>50</kie:width>
+            <kie:width>780</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape id="dmnshape-_35AD08AA-CA5D-4C4A-AF37-42CA29F8E454" dmnElementRef="_35AD08AA-CA5D-4C4A-AF37-42CA29F8E454" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="362" y="156" width="143" height="53"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_93BFFB92-D9F4-44C9-8A01-20F8856B8843" dmnElementRef="_93BFFB92-D9F4-44C9-8A01-20F8856B8843" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="115" y="157" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="dmnedge-_D9B7A60C-E586-4AFC-B2CE-D5678590A6D7" dmnElementRef="_D9B7A60C-E586-4AFC-B2CE-D5678590A6D7">
+        <di:waypoint x="165" y="182"/>
+        <di:waypoint x="362" y="182.5"/>
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</dmn:definitions>

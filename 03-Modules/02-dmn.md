@@ -112,9 +112,18 @@
     - **Function:**
       - It is a parameterized boxed expression containing a literal FEEL expression.
       - It supports FEEL/JAVA or PMML functions.
-      - By default, all BKM's are defined as boxed function expressions. 
+      - By default, all BKM's are defined as boxed function expressions.
+
+      ![](../01-Images/15-Function.png)
     - **Invocation:**
+      - 
+    
+      ![](../01-Images/16-Invocation.png)
     - **List:**
+      - It is used to represents a FEEL list of items.
+      - Each item is a FEEL expression.
+
+      ![](../01-Images/17-List.png)
 
 ## FEEL
 - Friendly Enough Expression Language (FEEL) is an expression language defined by the Object Management Group (OMG) DMN specification.
@@ -175,3 +184,4 @@
   - [Examples](https://github.com/kiegroup/drools/tree/master/kie-dmn/kie-dmn-core/src/test/resources/org/kie/dmn/core)
   - [DMN From MethodAndStyle](https://methodandstyle.com/category/dmn/)
   - [FEEL parser Online](https://github.com/nikku/feelin)
+  - [Katacoda Hands-on](https://www.katacoda.com/kuber-ru/courses/openshift-middleware/dm7-dmn-introduction)

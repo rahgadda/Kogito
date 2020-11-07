@@ -1,0 +1,353 @@
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://kiegroup.org/dmn/_7033629F-E5C0-42A8-9F49-3A58F6E77719" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" id="_23995C5D-6BB2-443E-B07F-C350DDDCE5E6" name="LeaseCalculator" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://kiegroup.org/dmn/_7033629F-E5C0-42A8-9F49-3A58F6E77719">
+  <dmn:extensionElements/>
+  <dmn:itemDefinition id="_1D3C9236-FC21-474D-AD50-3D33EFCF853C" name="LeaseDetails" isCollection="false">
+    <dmn:itemComponent id="_6E0D80D5-5C92-4319-90B2-F3517182470F" name="GrossCapitalizedCost" isCollection="false">
+      <dmn:typeRef>number</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_441CBCFF-9439-49DF-82AD-DEE7E2CDEDFF" name="CapitalizedCostReduction" isCollection="false">
+      <dmn:typeRef>number</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_48B04A01-E7B0-4B3E-A441-211606F4B940" name="ResidualPercentage" isCollection="false">
+      <dmn:typeRef>number</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_28A653B2-6153-4E9E-8456-D7091FBCCC5D" name="Rate" isCollection="false">
+      <dmn:typeRef>number</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_B766C90C-54E8-4BDF-A1BB-E20592443C5C" name="Term" isCollection="false">
+      <dmn:typeRef>number</dmn:typeRef>
+    </dmn:itemComponent>
+  </dmn:itemDefinition>
+  <dmn:itemDefinition id="_7137C94B-50FB-42D0-BA24-81BCA8B7D2DB" name="AmortizationRcd" isCollection="false">
+    <dmn:itemComponent id="_AC881C15-5C87-44D0-8808-B03F2825C1BB" name="SNO" isCollection="false">
+      <dmn:typeRef>number</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_FD3C56A5-74E4-4D86-A749-D232C6506F72" name="Principal" isCollection="false">
+      <dmn:typeRef>number</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_3F8243F0-24D3-44A6-9E33-C79A65A5CDD4" name="Interest" isCollection="false">
+      <dmn:typeRef>number</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_9CDD1C5A-EA53-4D14-B88D-D4D6787783A2" name="PmtAmt" isCollection="false">
+      <dmn:typeRef>number</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_45CD1349-B937-4A3A-B58D-A6FFE3B5BE13" name="Outstanding" isCollection="false">
+      <dmn:typeRef>number</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_6281E7B4-2A01-4BDE-8179-E9836F84A5EB" name="PrincipalRcvd" isCollection="false">
+      <dmn:typeRef>number</dmn:typeRef>
+    </dmn:itemComponent>
+  </dmn:itemDefinition>
+  <dmn:itemDefinition id="_39550C74-278B-48F9-968F-936C78A8DE50" name="AmortizationDetails" isCollection="true">
+    <dmn:typeRef>AmortizationRcd</dmn:typeRef>
+  </dmn:itemDefinition>
+  <dmn:businessKnowledgeModel id="_6C6D966F-3F84-4D22-9570-00682F463438" name="CalcAmortizationDetails">
+    <dmn:extensionElements/>
+    <dmn:variable id="_B960251F-6C31-44A2-9195-B96562645568" name="CalcAmortizationDetails" typeRef="AmortizationDetails"/>
+    <dmn:encapsulatedLogic id="_34173AA0-AE57-4A7B-9FB1-E21BD70F6785" kind="FEEL">
+      <dmn:formalParameter id="_3AFEF553-CD74-4A24-8804-57A6A5F9C2BC" name="counter" typeRef="number"/>
+      <dmn:formalParameter id="_507781A0-BDC3-4ECC-B6EA-3B152ABE066C" name="LeaseDetails" typeRef="LeaseDetails"/>
+      <dmn:formalParameter id="_871D1431-0993-40A6-995D-88B8FCA619BF" name="AmortizationDetails" typeRef="AmortizationDetails"/>
+      <dmn:context id="_0EF97DD3-3AC4-43F9-B70B-1D674D0A39A5">
+        <dmn:contextEntry>
+          <dmn:variable id="_85E671AE-E480-4BD9-A609-7BA5EEE27AFD" name="DecimalConvertor" typeRef="number"/>
+          <dmn:functionDefinition id="_B5C32D69-D7E5-46EF-ACEC-7299110172E7" kind="FEEL">
+            <dmn:formalParameter id="_1B209354-384D-47CE-8D04-EA65FF968780" name="num"/>
+            <dmn:literalExpression id="_3A8DFD88-6903-446B-ADCF-8F8980EE638D">
+              <dmn:text>decimal(num, 2)</dmn:text>
+            </dmn:literalExpression>
+          </dmn:functionDefinition>
+        </dmn:contextEntry>
+        <dmn:contextEntry>
+          <dmn:variable id="_752F034D-290C-4233-8AB7-89A3EE16B9B3" name="SNO" typeRef="number"/>
+          <dmn:literalExpression id="_E56EC4D8-2EC7-4959-8AA5-34C4F6B9B5E8">
+            <dmn:text>counter + 1</dmn:text>
+          </dmn:literalExpression>
+        </dmn:contextEntry>
+        <dmn:contextEntry>
+          <dmn:variable id="_1EF74831-94B2-4FEC-8421-411B38AB8EA1" name="GrossCapitalizedCost" typeRef="number"/>
+          <dmn:literalExpression id="_47797080-F010-4B89-AD56-375707364AA5">
+            <dmn:text>LeaseDetails.GrossCapitalizedCost</dmn:text>
+          </dmn:literalExpression>
+        </dmn:contextEntry>
+        <dmn:contextEntry>
+          <dmn:variable id="_EFF81ADF-BC30-46C1-A2B7-B8F0D0BE4E6A" name="CapitalizedCost" typeRef="number"/>
+          <dmn:literalExpression id="_F08CF61A-7A0C-4847-B131-A0F91B8BFBF8">
+            <dmn:text>LeaseDetails.CapitalizedCostReduction</dmn:text>
+          </dmn:literalExpression>
+        </dmn:contextEntry>
+        <dmn:contextEntry>
+          <dmn:variable id="_EE662794-CDB1-4D5D-A5FB-43580426160D" name="AdjustedCapitalizedCost" typeRef="number"/>
+          <dmn:literalExpression id="_038D89BF-5779-4558-9E4A-D5B1F2A4E5A8">
+            <dmn:text>GrossCapitalizedCost - CapitalizedCost</dmn:text>
+          </dmn:literalExpression>
+        </dmn:contextEntry>
+        <dmn:contextEntry>
+          <dmn:variable id="_1ECA3C63-0367-4567-B776-44C9E386E0D8" name="ResidualValue" typeRef="number"/>
+          <dmn:literalExpression id="_8D64EA58-65F1-4C78-89F4-6F29938D530B">
+            <dmn:text>AdjustedCapitalizedCost * (LeaseDetails.ResidualPercentage/100)</dmn:text>
+          </dmn:literalExpression>
+        </dmn:contextEntry>
+        <dmn:contextEntry>
+          <dmn:variable id="_A1E58840-0A6B-4F2B-A450-2CBA71CA7665" name="Depreciation" typeRef="number"/>
+          <dmn:literalExpression id="_02ADFB87-EA13-4149-A985-1979F6CA6B04">
+            <dmn:text>AdjustedCapitalizedCost - ResidualValue</dmn:text>
+          </dmn:literalExpression>
+        </dmn:contextEntry>
+        <dmn:contextEntry>
+          <dmn:variable id="_94679FE7-CBEB-4FAC-8D16-682111B46DC1" name="Rate" typeRef="number"/>
+          <dmn:literalExpression id="_410F71A2-D545-404D-904A-4F52041C156F">
+            <dmn:text>LeaseDetails.Rate</dmn:text>
+          </dmn:literalExpression>
+        </dmn:contextEntry>
+        <dmn:contextEntry>
+          <dmn:variable id="_8AB051B4-C7DE-43A6-88BE-8FFFF643F550" name="RentFactor" typeRef="number"/>
+          <dmn:literalExpression id="_E24F33AE-FDC0-4E2C-8D5D-08199A835613">
+            <dmn:text>(Rate/2400) * 12 * (30/360)</dmn:text>
+          </dmn:literalExpression>
+        </dmn:contextEntry>
+        <dmn:contextEntry>
+          <dmn:variable id="_9F519EC0-9379-4154-9CED-85DBA573C2A9" name="RentCharge" typeRef="number"/>
+          <dmn:literalExpression id="_15EC88C9-D100-4544-9CB8-47B25AC8674E">
+            <dmn:text>(AdjustedCapitalizedCost + ResidualValue)* RentFactor * LeaseDetails.Term</dmn:text>
+          </dmn:literalExpression>
+        </dmn:contextEntry>
+        <dmn:contextEntry>
+          <dmn:variable id="_2863A29B-6A62-4A0C-8A2B-5D2CFB8DBA7A" name="PmtAmt" typeRef="number"/>
+          <dmn:literalExpression id="_DF649FD2-A409-474B-8ADC-CB165D25560B">
+            <dmn:text>DecimalConvertor((Depreciation + RentCharge)/LeaseDetails.Term)</dmn:text>
+          </dmn:literalExpression>
+        </dmn:contextEntry>
+        <dmn:contextEntry>
+          <dmn:variable id="_E6BF6E96-2C54-4F07-8B06-FAAC0DE6152A" name="Principal" typeRef="number"/>
+          <dmn:literalExpression id="_960BC7B9-CB2D-4CA7-9E87-596E96D9468D">
+            <dmn:text>DecimalConvertor(Depreciation/LeaseDetails.Term)</dmn:text>
+          </dmn:literalExpression>
+        </dmn:contextEntry>
+        <dmn:contextEntry>
+          <dmn:variable id="_7B031B75-0FC2-4D58-B9ED-8A5D7ADB0497" name="Interest" typeRef="number"/>
+          <dmn:literalExpression id="_21EEE3D1-02B3-4FB8-B675-2E0A9C86F2A7">
+            <dmn:text>RentCharge/LeaseDetails.Term</dmn:text>
+          </dmn:literalExpression>
+        </dmn:contextEntry>
+        <dmn:contextEntry>
+          <dmn:variable id="_EEEBF2F9-F7B9-4CB7-84AC-D9FF30D35E1E" name="Outstanding" typeRef="number"/>
+          <dmn:literalExpression id="_BD2BD82F-1A2A-4824-8634-45D851C15730">
+            <dmn:text>if counter&gt; 0
+then DecimalConvertor(AmortizationDetails[counter].Outstanding - Principal)
+else DecimalConvertor(AdjustedCapitalizedCost - Principal)</dmn:text>
+          </dmn:literalExpression>
+        </dmn:contextEntry>
+        <dmn:contextEntry>
+          <dmn:variable id="_5D7A843B-475D-4D18-ACB3-EE243395AF33" name="PrincipalRcvd" typeRef="number"/>
+          <dmn:literalExpression id="_87AFAD45-4060-43A9-9983-4760E938BD82">
+            <dmn:text>DecimalConvertor(AdjustedCapitalizedCost - Outstanding)</dmn:text>
+          </dmn:literalExpression>
+        </dmn:contextEntry>
+        <dmn:contextEntry>
+          <dmn:variable id="_7C99FA52-612F-4E87-8A98-351DC3E99DDE" name="AmrtzRcd" typeRef="AmortizationRcd"/>
+          <dmn:context id="_482FB1FF-EC79-467B-BF1E-6ED488697C92">
+            <dmn:contextEntry>
+              <dmn:variable id="_F6EA71D4-BB98-4E89-A1B7-15137FC3A546" name="Sno" typeRef="number"/>
+              <dmn:literalExpression id="_8022A315-28E6-4BD1-B7ED-03181D1380FB">
+                <dmn:text>SNO</dmn:text>
+              </dmn:literalExpression>
+            </dmn:contextEntry>
+            <dmn:contextEntry>
+              <dmn:variable id="_4DF60EFA-73D7-4A10-B911-27E76E691CF3" name="Principal" typeRef="number"/>
+              <dmn:literalExpression id="_ED204597-DC8E-410B-8287-9ED6B6F8582F">
+                <dmn:text>Principal</dmn:text>
+              </dmn:literalExpression>
+            </dmn:contextEntry>
+            <dmn:contextEntry>
+              <dmn:variable id="_74A4FC93-B39C-4E6F-89B7-D85DB433660C" name="Interest" typeRef="number"/>
+              <dmn:literalExpression id="_81E2D93C-E07A-4919-86F4-AF19D9718577">
+                <dmn:text>Interest</dmn:text>
+              </dmn:literalExpression>
+            </dmn:contextEntry>
+            <dmn:contextEntry>
+              <dmn:variable id="_046281EE-2C73-44E0-B0D3-208C8AB17F54" name="PmtAmt" typeRef="number"/>
+              <dmn:literalExpression id="_FFB494C7-DC48-489B-A40F-2A25B4E106E1">
+                <dmn:text>PmtAmt</dmn:text>
+              </dmn:literalExpression>
+            </dmn:contextEntry>
+            <dmn:contextEntry>
+              <dmn:variable id="_54CC0C19-F391-4042-9CDF-B27C5C050507" name="Outstanding" typeRef="number"/>
+              <dmn:literalExpression id="_86E7132D-7A5E-434C-9536-0933582D8F4F">
+                <dmn:text>Outstanding</dmn:text>
+              </dmn:literalExpression>
+            </dmn:contextEntry>
+            <dmn:contextEntry>
+              <dmn:variable id="_750609DF-D781-498F-9FE2-3E4A8CF33604" name="PrincipalRcvd" typeRef="number"/>
+              <dmn:literalExpression id="_921BE851-EF09-4391-9F74-370FDD14E2A9">
+                <dmn:text>PrincipalRcvd</dmn:text>
+              </dmn:literalExpression>
+            </dmn:contextEntry>
+          </dmn:context>
+        </dmn:contextEntry>
+        <dmn:contextEntry>
+          <dmn:variable id="_2AD5220D-62D6-4682-A439-860810BD9405" name="UpdateAmortizationDetails" typeRef="AmortizationDetails"/>
+          <dmn:literalExpression id="_88E89EC1-24FA-4811-A939-19DD369C2799">
+            <dmn:text>append(AmortizationDetails, AmrtzRcd)</dmn:text>
+          </dmn:literalExpression>
+        </dmn:contextEntry>
+        <dmn:contextEntry>
+          <dmn:literalExpression id="_58DADBCE-5B21-4AC4-A77F-F027B6E62F69">
+            <dmn:text>if SNO &lt; LeaseDetails.Term
+then CalcAmortizationDetails(SNO, LeaseDetails, UpdateAmortizationDetails)
+else UpdateAmortizationDetails</dmn:text>
+          </dmn:literalExpression>
+        </dmn:contextEntry>
+      </dmn:context>
+    </dmn:encapsulatedLogic>
+  </dmn:businessKnowledgeModel>
+  <dmn:decision id="_7D7B0D47-3F17-4402-AF0B-D627233C6943" name="LeaseCalcRentFactor">
+    <dmn:extensionElements/>
+    <dmn:variable id="_1E987B38-F717-4348-98E3-02A260648A30" name="LeaseCalcRentFactor" typeRef="AmortizationDetails"/>
+    <dmn:informationRequirement id="_998DA9F2-BB6F-488A-8910-D5DC3A8B211C">
+      <dmn:requiredInput href="#_325C4B2B-27DF-4D14-A3D7-4F560D67B35A"/>
+    </dmn:informationRequirement>
+    <dmn:knowledgeRequirement id="_49E46E1D-66CB-402A-BC71-9807E2BDEC52">
+      <dmn:requiredKnowledge href="#_6C6D966F-3F84-4D22-9570-00682F463438"/>
+    </dmn:knowledgeRequirement>
+    <dmn:literalExpression id="_3A5D8E18-83AC-4CD7-875A-38859FF13968">
+      <dmn:text>CalcAmortizationDetails(0,LeaseDetails, [])</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:inputData id="_325C4B2B-27DF-4D14-A3D7-4F560D67B35A" name="LeaseDetails">
+    <dmn:extensionElements/>
+    <dmn:variable id="_50F4986C-C1D1-4315-8538-2F4C2F7D60A2" name="LeaseDetails" typeRef="LeaseDetails"/>
+  </dmn:inputData>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <di:extension>
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_0EF97DD3-3AC4-43F9-B70B-1D674D0A39A5">
+            <kie:width>50</kie:width>
+            <kie:width>200</kie:width>
+            <kie:width>725</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_B5C32D69-D7E5-46EF-ACEC-7299110172E7">
+            <kie:width>50</kie:width>
+            <kie:width>655</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_3A8DFD88-6903-446B-ADCF-8F8980EE638D">
+            <kie:width>655</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_E56EC4D8-2EC7-4959-8AA5-34C4F6B9B5E8">
+            <kie:width>725</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_47797080-F010-4B89-AD56-375707364AA5">
+            <kie:width>725</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_F08CF61A-7A0C-4847-B131-A0F91B8BFBF8">
+            <kie:width>725</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_038D89BF-5779-4558-9E4A-D5B1F2A4E5A8">
+            <kie:width>725</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_8D64EA58-65F1-4C78-89F4-6F29938D530B">
+            <kie:width>725</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_02ADFB87-EA13-4149-A985-1979F6CA6B04">
+            <kie:width>725</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_410F71A2-D545-404D-904A-4F52041C156F">
+            <kie:width>725</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_E24F33AE-FDC0-4E2C-8D5D-08199A835613">
+            <kie:width>725</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_15EC88C9-D100-4544-9CB8-47B25AC8674E">
+            <kie:width>725</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_DF649FD2-A409-474B-8ADC-CB165D25560B">
+            <kie:width>725</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_960BC7B9-CB2D-4CA7-9E87-596E96D9468D">
+            <kie:width>725</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_21EEE3D1-02B3-4FB8-B675-2E0A9C86F2A7">
+            <kie:width>725</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_BD2BD82F-1A2A-4824-8634-45D851C15730">
+            <kie:width>725</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_87AFAD45-4060-43A9-9983-4760E938BD82">
+            <kie:width>725</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_482FB1FF-EC79-467B-BF1E-6ED488697C92">
+            <kie:width>50</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>555</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_8022A315-28E6-4BD1-B7ED-03181D1380FB">
+            <kie:width>555</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_ED204597-DC8E-410B-8287-9ED6B6F8582F">
+            <kie:width>555</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_81E2D93C-E07A-4919-86F4-AF19D9718577">
+            <kie:width>555</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_FFB494C7-DC48-489B-A40F-2A25B4E106E1">
+            <kie:width>555</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_86E7132D-7A5E-434C-9536-0933582D8F4F">
+            <kie:width>555</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_921BE851-EF09-4391-9F74-370FDD14E2A9">
+            <kie:width>555</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_88E89EC1-24FA-4811-A939-19DD369C2799">
+            <kie:width>725</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_58DADBCE-5B21-4AC4-A77F-F027B6E62F69">
+            <kie:width>725</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_34173AA0-AE57-4A7B-9FB1-E21BD70F6785">
+            <kie:width>50</kie:width>
+            <kie:width>995</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_3A5D8E18-83AC-4CD7-875A-38859FF13968">
+            <kie:width>300</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape id="dmnshape-_6C6D966F-3F84-4D22-9570-00682F463438" dmnElementRef="_6C6D966F-3F84-4D22-9570-00682F463438" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="194" y="168" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_7D7B0D47-3F17-4402-AF0B-D627233C6943" dmnElementRef="_7D7B0D47-3F17-4402-AF0B-D627233C6943" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="441" y="168" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_325C4B2B-27DF-4D14-A3D7-4F560D67B35A" dmnElementRef="_325C4B2B-27DF-4D14-A3D7-4F560D67B35A" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="441" y="351" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="dmnedge-_998DA9F2-BB6F-488A-8910-D5DC3A8B211C" dmnElementRef="_998DA9F2-BB6F-488A-8910-D5DC3A8B211C">
+        <di:waypoint x="491" y="376"/>
+        <di:waypoint x="491" y="218"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_49E46E1D-66CB-402A-BC71-9807E2BDEC52" dmnElementRef="_49E46E1D-66CB-402A-BC71-9807E2BDEC52">
+        <di:waypoint x="244" y="193"/>
+        <di:waypoint x="441" y="193"/>
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</dmn:definitions>
