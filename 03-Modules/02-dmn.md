@@ -28,7 +28,10 @@
 ## Basics
 - Decision Model and Notation (DMN) is used to model decision service graphically.
 - It is a standard established by the **Object Management Group (OMG)** for describing and modeling operational decisions.
-- DMN decision model are determined by below
+- Kogito provides design and runtime support for **DMN 1.2** models at **conformance level 3**.
+- It provides runtime-only support for DMN 1.1 and 1.3 models at conformance level 3. 
+- DMN 1.1 and 1.3 models are currently not supported in the Kogito DMN modeler.
+- DMN decision model are determined by below:
   ![](../01-Images/04-DMNComponents.png)
   - **DRD:** 
     - A decision requirements diagrams trace business decisions from start to finish.
@@ -42,9 +45,53 @@
     - A Decision Requirements Graph models a domain of decision-making, showing the most important elements involved in it and the dependencies between them.
     - The elements modeled are **decisions**, **input data**, and **knowledge sources**. 
     - The visual representation of a DRG is called DRD.
-- Kogito provides design and runtime support for **DMN 1.2** models at **conformance level 3**.
-- It provides runtime-only support for DMN 1.1 and 1.3 models at conformance level 3. 
-- DMN 1.1 and 1.3 models are currently not supported in the Kogito DMN modeler.
+- Decision login inside Decision Box is represented using below. These can be selected in Decision Box as given [here]()
+  - **Decision Table:**
+    - It is a tabular representation of input/output entries.
+    - It is used to indicate which output entry applies to a specific set of inputs.
+    - **Hit Policies** determine how to reach an outcome when multiple rules in a decision table match the provided input values.
+    ![](../01-Images/08-HitPolicy.png)
+    - **Single-hit policies:**
+      - **Unique (U):**
+        - Permits only one rule to match. 
+        - Any overlap raises an error.
+      - **Any (A):**
+        - Permits multiple rules to match.
+        - All matching rules must have the same output.
+        - If multiple matching rules do not have the same output, an error is raised.
+      - **First (F):**
+        - Permits multiple rules to match, with different outputs.
+        - Uses the first match in rule order.
+      - **Priority (P):**
+        - Permits multiple rules to match, with different outputs.
+        - Result is the output value with the highest output priority.
+        - The first value has the highest priority.
+    - **Multiple-hit policies:**
+      - **Rule Order (R):**
+        - Permits multiple rules to match, with different outputs.
+        - Return the results of all satisfied rules in the order of the rules defined.
+      - **Output Order (O):**
+        - Permits multiple rules to match, with different outputs.
+        - Return the results of all satisfied rules in decreasing output priority order.
+      - **Collect:**  It allows to define multiple rules that can match. Returns the output of multiple rules.
+        ![](../01-Images/09-CollectionHitPolicy.png)
+        - **Collect (C):**
+          - Outputs are returned as an arbitrarily-ordered list.
+        - **Collect Sum (C+):**
+          - The sum of outputs is returned.
+        - **Collect Min (C<):**
+          - The smallest of outputs is returned.
+        - **Collect Max (C>):**
+          - The largest of outputs is returned.
+        - **Collect Count (C#):**
+          - The count of outputs is returned.
+  - **Boxed Expressions:**
+    - **Literal:**
+    - **Context:**
+    - **Relation:**
+    - **Function:**
+    - **Invocation:**
+    - **List:**
 
 ## FEEL
 - Friendly Enough Expression Language (FEEL) is an expression language defined by the Object Management Group (OMG) DMN specification.
@@ -56,9 +103,7 @@
   - The remaining characters in a variable name can be `digits`, `white spaces`, and special characters such as `+`, `-`, `/`, `*`, `'`, and `.`
   - Although the specifications allow, `in` is the only keyword in the language that cannot be used as part of a variable name.
   
-  Example: Birth Date, Flight 234 pre-check procedure.
-- **Conditional Statements:**
-  
+  Example: Birth Date, Flight 234 pre-check procedure. 
 - Data Types
     | Data Type                 	| Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          	|
     |---------------------------	|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
@@ -80,6 +125,9 @@
   | List            	| A list in FEEL is represented by a comma-separated list of values enclosed in square brackets.<br>All lists in FEEL contain elements of the same type and are immutable.<br>Elements in a list can be accessed by index, where the first element is 1. <br>Negative indexes can access elements starting from the end of the list so that -1 is the last element.<br><br>Example<br>[2,3,4,5]<br><br>x[1]=2<br>x[-2]=4 	|
 
 - Built in functions in FEEL are available [here](https://docs.jboss.org/kogito/release/latest/html_single/#ref-dmn-feel-builtin-functions_dmn-models)
+- **Conditional Statements:**
+- **Looping Constructs:**
+- **Operators:**
 
 ## Examples
 - There are two ways in creating DMN Project Template.
