@@ -116,7 +116,8 @@
 
       ![](../01-Images/15-Function.png)
     - **Invocation:**
-      - 
+      - It is a boxed expression that invokes a BKM's with a list of parameter bindings.
+      - Each row represents a name of a parameter on the left and binding expression on the right whose value is assigned to the parameter to evaluate the invoked BKM.
     
       ![](../01-Images/16-Invocation.png)
     - **List:**
@@ -184,4 +185,4 @@
   - [Examples](https://github.com/kiegroup/drools/tree/master/kie-dmn/kie-dmn-core/src/test/resources/org/kie/dmn/core)
   - [DMN From MethodAndStyle](https://methodandstyle.com/category/dmn/)
   - [FEEL parser Online](https://github.com/nikku/feelin)
-  - [Katacoda Hands-on](https://www.katacoda.com/kuber-ru/courses/openshift-middleware/dm7-dmn-introduction)
+  - [Katacoda Interactive Learning](https://www.katacoda.com/kuber-ru/courses/openshift-middleware/dm7-dmn-introduction)

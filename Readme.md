@@ -96,4 +96,5 @@ Below are details of building blocks of Kogito
 - References
   - [Kogito Documentation](https://docs.jboss.org/kogito/release/latest/html_single/#con-kogito-automation_kogito-docs)
   - [Kogito Examples](https://github.com/kiegroup/kogito-examples)
-  - [Katacoda Hands-on](https://www.katacoda.com/kuber-ru/courses/openshift-middleware/)
+  - [Katacoda Interactive Learning](https://www.katacoda.com/kuber-ru/courses/openshift-middleware/)
+  - [Learn Openshift Interactive Learning](https://learn.openshift.com/)
