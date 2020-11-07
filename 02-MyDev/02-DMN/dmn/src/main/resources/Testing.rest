@@ -1,6 +1,7 @@
 ### Swagger Details
 ### http://localhost:8080/swagger-ui
 
+### Demo - Decision Service
 ### 1. Traffic Violation - Specification/Metadata XML
 GET http://localhost:8080/TrafficViolation
 
@@ -45,5 +46,57 @@ Accept: application/json
         "Type": "Speed",
         "SpeedLimit": 100,
         "ActualSpeed": 200
+    }
+}
+
+### Demo - Recurssion
+### 4. FibonaciListGenerator from 1 to 45 i.e. 9 sequences
+POST http://localhost:8080/FibonaciListGenerator
+Content-Type: application/json
+Accept: application/json
+
+
+
+### Demo - Complex Business Usecase
+### x. Loan Calculator
+POST http://localhost:8080/LoanCalculator
+Content-Type: application/json
+Accept: application/json
+
+{
+    "LoanDetails":{
+       "Amount":18700,
+       "Rate":12,
+       "Term":12
+    }
+}
+
+### x. Lease Calculator Rentfactor Based
+POST http://localhost:8080/LeaseCalculator
+Content-Type: application/json
+Accept: application/json
+
+{
+    "LeaseDetails":{
+       "GrossCapitalizedCost":18700,
+       "CapitalizedCostReduction":0,
+       "ResidualPercentage":0,
+       "Rate":12,
+       "Term":12
+    }
+}
+
+### x. Lease Calculator Interest Bearning
+POST http://localhost:8080/LeaseCalculatorIBL
+Content-Type: application/json
+Accept: application/json
+
+{
+    "LeaseDetails":{
+       "GrossCapitalizedCost":18700,
+       "CapitalizedCostReduction":0,
+       "ResidualPercentage":0,
+       "Rate":12,
+       "Term":12
     }
 }
