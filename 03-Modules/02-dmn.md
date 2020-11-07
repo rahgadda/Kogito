@@ -45,7 +45,7 @@
     - A Decision Requirements Graph models a domain of decision-making, showing the most important elements involved in it and the dependencies between them.
     - The elements modeled are **decisions**, **input data**, and **knowledge sources**. 
     - The visual representation of a DRG is called DRD.
-- Decision login inside Decision Box is represented using below. These can be selected in Decision Box as given [here]()
+- Decision logic inside Decision Box/BKM is represented using below. These can be selected in Decision Box/BKM as given [here]()
   - **Decision Table:**
     - It is a tabular representation of input/output entries.
     - It is used to indicate which output entry applies to a specific set of inputs.
@@ -93,11 +93,26 @@
     - **Literal:**
       - It is a literal FEEL expression.
       - It contains literal, constant, variables or FEEL Functions. 
+    
+      ![](../01-Images/12-Expression.png)
     - **Context:**
       - It is a set of variable names and values with a result value.
-      -  
+      - Key can be a temporary variable/function inputs. 
+      - Value in a boxed context expression.
+      - This can be used to create recursions like calculating amortization schedule.
+
+      ![](../01-Images/13-Context.png)
     - **Relation:**
+      - This is similar to Context where key,values are arranged vertically.
+      - In this approach key,values are represented as tables.
+      - Each column of table represent context keys.
+      - Each row of the table represent context values.
+
+      ![](../01-Images/14-Relation.png)
     - **Function:**
+      - It is a parameterized boxed expression containing a literal FEEL expression.
+      - It supports FEEL/JAVA or PMML functions.
+      - By default, all BKM's are defined as boxed function expressions. 
     - **Invocation:**
     - **List:**
 
