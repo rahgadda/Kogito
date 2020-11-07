@@ -87,7 +87,7 @@
           - The largest of outputs is returned.
         - **Collect Count (C#):**
           - The count of outputs is returned.
-    ![](../01-Images/11-DecisionTable.png)
+  ![](../01-Images/11-DecisionTable.png)
   - **Boxed Expressions:**
     - **Literal:**
       - It is a literal FEEL expression.
