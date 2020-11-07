@@ -89,8 +89,15 @@
   - RESTEasy JAX-RS [Added by Default]
   - Kogito
   - SmallRye OpenAPI
+  - Scenario Simulation for Visual Unit Testing
+  - Quarkus Arc for DI
 - Update application.properties with below
   `quarkus.swagger-ui.always-include=true`
+- Updated folder files as given [here](../02-MyDev/02-DMN/dmn)
+- Artifacts details
+  - DMN models are available [here](../02-MyDev/02-DMN/dmn/src/main/resources).
+  - UI Testing Files available [here](../02-MyDev/02-DMN/dmn/src/test/java/resources)
+  - Manual Testing `.rest` file are available [here](../02-MyDev/02-DMN/dmn/src/main/resources/Testing.rest)
 
 ## Appendix
 - References
