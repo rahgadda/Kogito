@@ -49,6 +49,16 @@
 ## FEEL
 - Friendly Enough Expression Language (FEEL) is an expression language defined by the Object Management Group (OMG) DMN specification.
 - FEEL is designed to facilitate both decision modeling and execution by assigning semantics to the decision model constructs.
+- **Variables:**
+  - A FEEL name must start with a `letter`, `?`, or `_` element.
+  - The unicode letter characters are also allowed.
+  - Variable names cannot start with a language keyword.
+  - The remaining characters in a variable name can be `digits`, `white spaces`, and special characters such as `+`, `-`, `/`, `*`, `'`, and `.`
+  - Although the specifications allow, `in` is the only keyword in the language that cannot be used as part of a variable name.
+  
+  Example: Birth Date, Flight 234 pre-check procedure.
+- **Conditional Statements:**
+  
 - Data Types
     | Data Type                 	| Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          	|
     |---------------------------	|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
@@ -71,7 +81,19 @@
 
 - Built in functions in FEEL are available [here](https://docs.jboss.org/kogito/release/latest/html_single/#ref-dmn-feel-builtin-functions_dmn-models)
 
+## Examples
+- There are two ways in creating DMN Project Template.
+  - Quarkus VSCode Plugin
+  - [Online Generator](https://code.quarkus.io/)  
+- Add below plugin
+  - RESTEasy JAX-RS [Added by Default]
+  - Kogito
+  - SmallRye OpenAPI
+- Update application.properties with below
+  `quarkus.swagger-ui.always-include=true`
+
 ## Appendix
 - References
   - [Examples](https://github.com/kiegroup/drools/tree/master/kie-dmn/kie-dmn-core/src/test/resources/org/kie/dmn/core)
   - [DMN From MethodAndStyle](https://methodandstyle.com/category/dmn/)
+  - [FEEL parser Online](https://github.com/nikku/feelin)

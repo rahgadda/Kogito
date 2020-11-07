@@ -1,0 +1,49 @@
+### Swagger Details
+### http://localhost:8080/swagger-ui
+
+### 1. Traffic Violation - Specification/Metadata XML
+GET http://localhost:8080/TrafficViolation
+
+### 2. Traffic Violation - Decision Service[DriverSuspention]
+POST http://localhost:8080/TrafficViolation/DriverSuspention
+Content-Type: application/json
+Accept: application/json
+
+{
+    "Driver":{
+        "Name": "John Doe",
+        "Age": 19,
+        "State": "California",
+        "City": "Los Angeles",
+        "Points": 17
+    },
+    "Violation": {
+        "Code": "001",
+        "Date": "2020-11-03",
+        "Type": "Speed",
+        "SpeedLimit": 100,
+        "ActualSpeed": 200
+    }
+}
+
+### 3. Traffic Violation
+POST http://localhost:8080/TrafficViolation
+Content-Type: application/json
+Accept: application/json
+
+{
+    "Driver":{
+        "Name": "John Doe",
+        "Age": 19,
+        "State": "California",
+        "City": "Los Angeles",
+        "Points": 14
+    },
+    "Violation": {
+        "Code": "001",
+        "Date": "2020-11-03",
+        "Type": "Speed",
+        "SpeedLimit": 100,
+        "ActualSpeed": 200
+    }
+}
