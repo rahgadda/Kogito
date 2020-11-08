@@ -56,7 +56,8 @@ Content-Type: application/json
 Accept: application/json
 
 ### Demo - Filtering
-### 5. List All Manager https://apex.oracle.com/pls/apex/oraclejet/emp/
+### 5. List All Manager 
+### Sample refered from response of https://apex.oracle.com/pls/apex/oraclejet/emp/
 POST http://localhost:8080/filter
 Content-Type: application/json
 Accept: application/json
@@ -206,6 +207,26 @@ Accept: application/json
 	]
 }
 
+### Demo - Decision Table
+### 6. Determine Hot/Cold
+POST http://localhost:8080/hotcold
+Content-Type: application/json
+Accept: application/json
+
+{
+    "temperature": 10
+}
+
+### Demo - TypeReferenceInfo
+### 7. Response DataType Based on Input
+### 1 - Function, 2 - List, 3 - Object/Context, 4-Collection
+POST http://localhost:8080/TypeReferenceInfo
+Content-Type: application/json
+Accept: application/json
+
+{
+    "RefInfo":4
+}
 
 ### Demo - Complex Business Usecase
 ### x. Loan Calculator
