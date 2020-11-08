@@ -158,10 +158,10 @@
   | List            	| A list in FEEL is represented by a comma-separated list of values enclosed in square brackets.<br>All lists in FEEL contain elements of the same type and are immutable.<br>Elements in a list can be accessed by index, where the first element is 1. <br>Negative indexes can access elements starting from the end of the list so that -1 is the last element.<br><br>Example<br>[2,3,4,5]<br><br>x[1]=2<br>x[-2]=4 	|
 
 - Built in functions in FEEL are available [here](https://docs.jboss.org/kogito/release/latest/html_single/#ref-dmn-feel-builtin-functions_dmn-models)
-- **Operators:**
-  - **Arithmetic:**
 
-| Name                	| Expression  	| Result 	|
+- **Arithmetic Operators:**
+
+| Name                	| Expression  	| Result |
 |---------------------	|-------------	|--------	|
 | Addition (+)        	| 0.15 + 30   	| 30.15  	|
 | Subtraction (-)     	| 15 - 30     	| -15    	|
@@ -169,7 +169,7 @@
 | Division (/)        	| 1/50        	| 0.02   	|
 | Exponentiation (**) 	| 2**3        	| 8      	|
 
-  - **Comparison:**
+- **Comparison Operators:**
 
 | Name                          	| Expression   	| Result 	|
 |-------------------------------	|--------------	|--------	|
@@ -180,7 +180,7 @@
 | Greater than (>)              	| 30 in (>30)  	| false  	|
 | Greater than or equal to (>=) 	| 1/5>=0.20    	| true   	|
 
-  - **Logical:**
+- **Logical Operators:**
     
 | Name              	| Expression                	| Result 	|
 |-------------------	|---------------------------	|--------	|
