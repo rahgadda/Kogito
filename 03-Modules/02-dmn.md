@@ -137,7 +137,7 @@
   - Although the specifications allow, `in` is the only keyword in the language that cannot be used as part of a variable name.
   
   Example: Birth Date, Flight 234 pre-check procedure. 
-- Data Types
+- **Data Types:**
     | Data Type                 	| Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          	|
     |---------------------------	|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
     | Number                    	| Numbers in FEEL are based on the IEEE 754-2008 Decimal 128 format, with 34 digits of precision.<br>Internally, numbers are represented in Java as BigDecimals with MathContext DECIMAL128.<br>It is used to represent both integers and floating-point numbers. FEEL numbers use a dot (.) as a decimal separator.<br><br>FEEL does not support -INF, +INF, or NaN. <br>FEEL uses null to represent invalid numbers.<br><br>Kogito extends DMN specification and supports additional number notations<br>- **Scientific:** Suffix *e<exp> or E<exp>*. For example, 1.2e3 or 1.2E3 = 1.2*10**3<br>- **Hexadecimal:** Prefix *0x*. For example, 0xff or 0XFF = 255 	|
@@ -158,10 +158,48 @@
   | List            	| A list in FEEL is represented by a comma-separated list of values enclosed in square brackets.<br>All lists in FEEL contain elements of the same type and are immutable.<br>Elements in a list can be accessed by index, where the first element is 1. <br>Negative indexes can access elements starting from the end of the list so that -1 is the last element.<br><br>Example<br>[2,3,4,5]<br><br>x[1]=2<br>x[-2]=4 	|
 
 - Built in functions in FEEL are available [here](https://docs.jboss.org/kogito/release/latest/html_single/#ref-dmn-feel-builtin-functions_dmn-models)
-- **Conditional Statements:**
-- **Looping Constructs:**
 - **Operators:**
+  - **Arithmetic:**
 
+| Name                	| Expression  	| Result 	|
+|---------------------	|-------------	|--------	|
+| Addition (+)        	| 0.15 + 30   	| 30.15  	|
+| Subtraction (-)     	| 15 - 30     	| -15    	|
+| Multiplication (*)  	| .20 * 40.02 	| 8.004  	|
+| Division (/)        	| 1/50        	| 0.02   	|
+| Exponentiation (**) 	| 2**3        	| 8      	|
+
+  - **Comparison:**
+
+| Name                          	| Expression   	| Result 	|
+|-------------------------------	|--------------	|--------	|
+| Equal (=)                     	| 8=2**3       	| true   	|
+| Not equal to (!=)             	| 8!=2**3      	| false  	|
+| Less than (<)                 	| 8<2**3       	| false  	|
+| Less than or equal to (<=)    	| 15 in (<=15) 	| true   	|
+| Greater than (>)              	| 30 in (>30)  	| false  	|
+| Greater than or equal to (>=) 	| 1/5>=0.20    	| true   	|
+
+  - **Logical:**
+    
+| Name              	| Expression                	| Result 	|
+|-------------------	|---------------------------	|--------	|
+| Disjunction (OR)  	| (2*2=2**2) or (3*2=3**2)  	| true   	|
+| Conjunction (AND) 	| (2*2=2**2) and (3*2=3**2) 	| false  	|
+| Negation (NOT)    	| not(2*2=2**2)             	| false  	|
+
+- **Conditional Statements:**
+  - If   
+    `if (x < 5) then "low" else "high"`
+- **Looping Constructs:**
+  
+| Construct 	| Example                                                                                                                                                                                                                                                     	|
+|-----------	|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
+| For       	| for x in 1..3, y in 4..6 return x * y<br><br>Output:   [4,5,6,8,10,12,12,15,18]                                                                                                                                                                             	|
+| Some      	| some x in [1,2], y in [2,3] satisfies x < y<br><br>Output: true                                                                                                                                                                                             	|
+| Each      	| every x in [1,2], y in [2,3] satisfies x < y<br><br>Output: false                                                                                                                                                                                           	|
+| []        	| Filter a list of elements by an expression.<br>The expression can access the current element by `item`.<br><br>[1,2,3,4][1] \\1<br>[1,2,3,4][item > 2] \\ [3,4]<br>[1,2,3,4][-2] \\3<br>[{a: "foo", b: 5}, {a: "bar", b: 10}][b > 7]  // {a : "bar", b: 10} 	|
+| .         	| A dot(.) operator is used to access the value of the object/context by specifying the key.<br><br>duration("P2Y3M").years \\2<br>[{a : "foo", b: 5 }, {a: "bar", b: 10} ].a \\["foo", "bar"]                                                                	|
 ## Examples
 - There are two ways in creating DMN Project Template.
   - [Quarkus VSCode Plugin](../01-Images/07-DMNVscode.gif)
