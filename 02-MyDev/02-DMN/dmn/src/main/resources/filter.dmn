@@ -1,0 +1,80 @@
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://kiegroup.org/dmn/_F94BACA6-F866-4D1C-A91C-13CA26E73BC8" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_41BCB82A-D3B0-47EF-8875-F1330028EEAD" name="filter" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://kiegroup.org/dmn/_F94BACA6-F866-4D1C-A91C-13CA26E73BC8">
+  <dmn:extensionElements/>
+  <dmn:itemDefinition id="_5EC430F9-BDB9-4F27-B7EE-E1CEE809E8A0" name="items" isCollection="true">
+    <dmn:itemComponent id="_94AB7E1F-B0DB-476C-94B2-BF93DB6460FE" name="empno" isCollection="false">
+      <dmn:typeRef>number</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_FACDED81-C7A0-4BB6-90C8-CA8D9FC07F19" name="ename" isCollection="false">
+      <dmn:typeRef>string</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_CAA0E013-0CFC-4969-BC30-5D3F00C1FCF7" name="job" isCollection="false">
+      <dmn:typeRef>string</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_14A2C037-BC05-41C7-AB64-17E5C8D45778" name="mgr" isCollection="false">
+      <dmn:typeRef>number</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_AC0915A4-62CB-4896-A9AB-B14F04123727" name="hiredate" isCollection="false">
+      <dmn:typeRef>date and time</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_631BBF7F-7F44-41AD-A6FE-B0F060A23DFB" name="sal" isCollection="false">
+      <dmn:typeRef>number</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_645E527C-F6BE-4B62-8A0C-0E005DD5E51D" name="comm" isCollection="false">
+      <dmn:typeRef>number</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_A0BEF74B-64DC-4D21-9FD8-083A7AA52F76" name="deptno" isCollection="false">
+      <dmn:typeRef>number</dmn:typeRef>
+    </dmn:itemComponent>
+  </dmn:itemDefinition>
+  <dmn:itemDefinition id="_81BD153C-8877-4C83-9FB9-0BA87FC1AB83" name="EmployeeNames" isCollection="true">
+    <dmn:typeRef>string</dmn:typeRef>
+  </dmn:itemDefinition>
+  <dmn:inputData id="_275BB41A-B74A-4325-AC1A-ECB97A48333B" name="Employees">
+    <dmn:extensionElements/>
+    <dmn:variable id="_9ACA286C-4C35-4D53-A1B5-AAF5AD774F8A" name="Employees" typeRef="items"/>
+  </dmn:inputData>
+  <dmn:decision id="_7411555D-7621-4C63-A3A7-C487C30C4DE3" name="Manager Employee Names">
+    <dmn:description>Employee Names of Manager</dmn:description>
+    <dmn:extensionElements/>
+    <dmn:variable id="_0014B222-37D1-49E6-AEE8-8396D7F3B5AB" name="Manager Employee Names" typeRef="EmployeeNames"/>
+    <dmn:informationRequirement id="_C3E663EF-C7EE-48A0-9460-B7D750340114">
+      <dmn:requiredInput href="#_275BB41A-B74A-4325-AC1A-ECB97A48333B"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_58FB3DC3-9596-4310-96F3-5728910D6690">
+      <dmn:text>Employees[job="MANAGER"].ename</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="_73AD8259-FF75-4800-8ADC-78C2A9CB16FB" name="DRG">
+      <di:extension>
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_58FB3DC3-9596-4310-96F3-5728910D6690">
+            <kie:width>300</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape id="dmnshape-drg-_275BB41A-B74A-4325-AC1A-ECB97A48333B" dmnElementRef="_275BB41A-B74A-4325-AC1A-ECB97A48333B" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="387" y="285" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_7411555D-7621-4C63-A3A7-C487C30C4DE3" dmnElementRef="_7411555D-7621-4C63-A3A7-C487C30C4DE3" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="332" y="158" width="211" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="dmnedge-drg-_C3E663EF-C7EE-48A0-9460-B7D750340114" dmnElementRef="_C3E663EF-C7EE-48A0-9460-B7D750340114">
+        <di:waypoint x="437" y="310"/>
+        <di:waypoint x="437.5" y="208"/>
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</dmn:definitions>
