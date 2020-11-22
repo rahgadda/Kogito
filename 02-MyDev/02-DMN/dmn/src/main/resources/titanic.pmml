@@ -1,0 +1,983 @@
+<PMML version="4.2" xmlns="http://www.dmg.org/PMML-4_2">
+  <Header copyright="rahgadda">
+    <Application name="KNIME" version="4.2.3"/>
+  </Header>
+  <DataDictionary numberOfFields="9">
+    <DataField name="Survived" optype="categorical" dataType="string">
+      <Value value="Dead"/>
+      <Value value="Alive"/>
+    </DataField>
+    <DataField name="Pclass" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="1.0" rightMargin="3.0"/>
+    </DataField>
+    <DataField name="Sex" optype="categorical" dataType="string">
+      <Value value="male"/>
+      <Value value="female"/>
+    </DataField>
+    <DataField name="Age" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.42" rightMargin="80.0"/>
+    </DataField>
+    <DataField name="SibSp" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="8.0"/>
+    </DataField>
+    <DataField name="Parch" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="6.0"/>
+    </DataField>
+    <DataField name="Fare" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="512.3292"/>
+    </DataField>
+    <DataField name="Cabin" optype="categorical" dataType="string"/>
+    <DataField name="Embarked" optype="categorical" dataType="string">
+      <Value value="S"/>
+      <Value value="C"/>
+      <Value value="Q"/>
+    </DataField>
+  </DataDictionary>
+  <TreeModel modelName="DecisionTree" functionName="classification" splitCharacteristic="multiSplit" missingValueStrategy="lastPrediction" noTrueChildStrategy="returnNullPrediction">
+    <MiningSchema>
+      <MiningField name="Pclass" invalidValueTreatment="asIs"/>
+      <MiningField name="Sex" invalidValueTreatment="asIs"/>
+      <MiningField name="Age" invalidValueTreatment="asIs"/>
+      <MiningField name="SibSp" invalidValueTreatment="asIs"/>
+      <MiningField name="Parch" invalidValueTreatment="asIs"/>
+      <MiningField name="Fare" invalidValueTreatment="asIs"/>
+      <MiningField name="Embarked" invalidValueTreatment="asIs"/>
+      <MiningField name="Survived" invalidValueTreatment="asIs" usageType="target"/>
+    </MiningSchema>
+    <Node id="0" score="Dead" recordCount="891.0">
+      <True/>
+      <ScoreDistribution value="Dead" recordCount="549.0"/>
+      <ScoreDistribution value="Alive" recordCount="342.0"/>
+      <Node id="1" score="Dead" recordCount="577.0">
+        <SimplePredicate field="Sex" operator="equal" value="male"/>
+        <ScoreDistribution value="Dead" recordCount="468.0"/>
+        <ScoreDistribution value="Alive" recordCount="109.0"/>
+        <Node id="2" score="Dead" recordCount="415.0">
+          <SimplePredicate field="Fare" operator="lessOrEqual" value="26.26875"/>
+          <ScoreDistribution value="Dead" recordCount="361.0"/>
+          <ScoreDistribution value="Alive" recordCount="54.0"/>
+          <Node id="3" score="Dead" recordCount="380.0">
+            <SimplePredicate field="Parch" operator="lessOrEqual" value="0.5"/>
+            <ScoreDistribution value="Dead" recordCount="341.0"/>
+            <ScoreDistribution value="Alive" recordCount="39.0"/>
+            <Node id="4" score="Dead" recordCount="303.0">
+              <SimplePredicate field="Embarked" operator="equal" value="S"/>
+              <ScoreDistribution value="Dead" recordCount="274.0"/>
+              <ScoreDistribution value="Alive" recordCount="29.0"/>
+              <Node id="5" score="Dead" recordCount="259.0">
+                <SimplePredicate field="Fare" operator="lessOrEqual" value="13.25"/>
+                <ScoreDistribution value="Dead" recordCount="231.0"/>
+                <ScoreDistribution value="Alive" recordCount="28.0"/>
+                <Node id="6" score="Dead" recordCount="122.0">
+                  <SimplePredicate field="Fare" operator="lessOrEqual" value="7.9104"/>
+                  <ScoreDistribution value="Dead" recordCount="114.0"/>
+                  <ScoreDistribution value="Alive" recordCount="8.0"/>
+                  <Node id="7" score="Dead" recordCount="88.0">
+                    <SimplePredicate field="Fare" operator="lessOrEqual" value="7.864599999999999"/>
+                    <ScoreDistribution value="Dead" recordCount="80.0"/>
+                    <ScoreDistribution value="Alive" recordCount="8.0"/>
+                    <Node id="8" score="Dead" recordCount="60.0">
+                      <SimplePredicate field="Fare" operator="lessOrEqual" value="7.7625"/>
+                      <ScoreDistribution value="Dead" recordCount="57.0"/>
+                      <ScoreDistribution value="Alive" recordCount="3.0"/>
+                      <Node id="9" score="Dead" recordCount="37.0">
+                        <SimplePredicate field="Fare" operator="lessOrEqual" value="7.19585"/>
+                        <ScoreDistribution value="Dead" recordCount="34.0"/>
+                        <ScoreDistribution value="Alive" recordCount="3.0"/>
+                        <Node id="10" score="Dead" recordCount="12.0">
+                          <SimplePredicate field="Pclass" operator="lessOrEqual" value="2.5"/>
+                          <ScoreDistribution value="Dead" recordCount="12.0"/>
+                          <ScoreDistribution value="Alive" recordCount="0.0"/>
+                        </Node>
+                        <Node id="11" score="Dead" recordCount="25.0">
+                          <SimplePredicate field="Pclass" operator="greaterThan" value="2.5"/>
+                          <ScoreDistribution value="Dead" recordCount="22.0"/>
+                          <ScoreDistribution value="Alive" recordCount="3.0"/>
+                          <Node id="12" score="Dead" recordCount="10.0">
+                            <SimplePredicate field="Fare" operator="lessOrEqual" value="7.0104"/>
+                            <ScoreDistribution value="Dead" recordCount="8.0"/>
+                            <ScoreDistribution value="Alive" recordCount="2.0"/>
+                            <Node id="13" score="Dead" recordCount="4.0">
+                              <SimplePredicate field="Age" operator="lessOrEqual" value="30.5"/>
+                              <ScoreDistribution value="Dead" recordCount="2.0"/>
+                              <ScoreDistribution value="Alive" recordCount="2.0"/>
+                              <Node id="14" score="Dead" recordCount="2.0">
+                                <SimplePredicate field="Age" operator="lessOrEqual" value="22.0"/>
+                                <ScoreDistribution value="Dead" recordCount="2.0"/>
+                                <ScoreDistribution value="Alive" recordCount="0.0"/>
+                              </Node>
+                              <Node id="15" score="Alive" recordCount="2.0">
+                                <SimplePredicate field="Age" operator="greaterThan" value="22.0"/>
+                                <ScoreDistribution value="Dead" recordCount="0.0"/>
+                                <ScoreDistribution value="Alive" recordCount="2.0"/>
+                              </Node>
+                            </Node>
+                            <Node id="16" score="Dead" recordCount="6.0">
+                              <SimplePredicate field="Age" operator="greaterThan" value="30.5"/>
+                              <ScoreDistribution value="Dead" recordCount="6.0"/>
+                              <ScoreDistribution value="Alive" recordCount="0.0"/>
+                            </Node>
+                          </Node>
+                          <Node id="17" score="Dead" recordCount="15.0">
+                            <SimplePredicate field="Fare" operator="greaterThan" value="7.0104"/>
+                            <ScoreDistribution value="Dead" recordCount="14.0"/>
+                            <ScoreDistribution value="Alive" recordCount="1.0"/>
+                          </Node>
+                        </Node>
+                      </Node>
+                      <Node id="22" score="Dead" recordCount="23.0">
+                        <SimplePredicate field="Fare" operator="greaterThan" value="7.19585"/>
+                        <ScoreDistribution value="Dead" recordCount="23.0"/>
+                        <ScoreDistribution value="Alive" recordCount="0.0"/>
+                      </Node>
+                    </Node>
+                    <Node id="23" score="Dead" recordCount="28.0">
+                      <SimplePredicate field="Fare" operator="greaterThan" value="7.7625"/>
+                      <ScoreDistribution value="Dead" recordCount="23.0"/>
+                      <ScoreDistribution value="Alive" recordCount="5.0"/>
+                    </Node>
+                  </Node>
+                  <Node id="40" score="Dead" recordCount="34.0">
+                    <SimplePredicate field="Fare" operator="greaterThan" value="7.864599999999999"/>
+                    <ScoreDistribution value="Dead" recordCount="34.0"/>
+                    <ScoreDistribution value="Alive" recordCount="0.0"/>
+                  </Node>
+                </Node>
+                <Node id="41" score="Dead" recordCount="137.0">
+                  <SimplePredicate field="Fare" operator="greaterThan" value="7.9104"/>
+                  <ScoreDistribution value="Dead" recordCount="117.0"/>
+                  <ScoreDistribution value="Alive" recordCount="20.0"/>
+                  <Node id="42" score="Dead" recordCount="13.0">
+                    <SimplePredicate field="Fare" operator="lessOrEqual" value="7.987500000000001"/>
+                    <ScoreDistribution value="Dead" recordCount="8.0"/>
+                    <ScoreDistribution value="Alive" recordCount="5.0"/>
+                    <Node id="43" score="Dead" recordCount="11.0">
+                      <SimplePredicate field="SibSp" operator="lessOrEqual" value="1.5"/>
+                      <ScoreDistribution value="Dead" recordCount="6.0"/>
+                      <ScoreDistribution value="Alive" recordCount="5.0"/>
+                      <Node id="44" score="Dead" recordCount="4.0">
+                        <SimplePredicate field="Age" operator="lessOrEqual" value="26.0"/>
+                        <ScoreDistribution value="Dead" recordCount="3.0"/>
+                        <ScoreDistribution value="Alive" recordCount="1.0"/>
+                      </Node>
+                      <Node id="47" score="Alive" recordCount="7.0">
+                        <SimplePredicate field="Age" operator="greaterThan" value="26.0"/>
+                        <ScoreDistribution value="Dead" recordCount="3.0"/>
+                        <ScoreDistribution value="Alive" recordCount="4.0"/>
+                      </Node>
+                    </Node>
+                    <Node id="50" score="Dead" recordCount="2.0">
+                      <SimplePredicate field="SibSp" operator="greaterThan" value="1.5"/>
+                      <ScoreDistribution value="Dead" recordCount="2.0"/>
+                      <ScoreDistribution value="Alive" recordCount="0.0"/>
+                    </Node>
+                  </Node>
+                  <Node id="51" score="Dead" recordCount="124.0">
+                    <SimplePredicate field="Fare" operator="greaterThan" value="7.987500000000001"/>
+                    <ScoreDistribution value="Dead" recordCount="109.0"/>
+                    <ScoreDistribution value="Alive" recordCount="15.0"/>
+                    <Node id="52" score="Dead" recordCount="42.0">
+                      <SimplePredicate field="Fare" operator="lessOrEqual" value="8.1354"/>
+                      <ScoreDistribution value="Dead" recordCount="36.0"/>
+                      <ScoreDistribution value="Alive" recordCount="6.0"/>
+                    </Node>
+                    <Node id="65" score="Dead" recordCount="82.0">
+                      <SimplePredicate field="Fare" operator="greaterThan" value="8.1354"/>
+                      <ScoreDistribution value="Dead" recordCount="73.0"/>
+                      <ScoreDistribution value="Alive" recordCount="9.0"/>
+                      <Node id="66" score="Dead" recordCount="22.0">
+                        <SimplePredicate field="Fare" operator="lessOrEqual" value="9.49165"/>
+                        <ScoreDistribution value="Dead" recordCount="21.0"/>
+                        <ScoreDistribution value="Alive" recordCount="1.0"/>
+                      </Node>
+                      <Node id="73" score="Dead" recordCount="60.0">
+                        <SimplePredicate field="Fare" operator="greaterThan" value="9.49165"/>
+                        <ScoreDistribution value="Dead" recordCount="52.0"/>
+                        <ScoreDistribution value="Alive" recordCount="8.0"/>
+                        <Node id="74" score="Dead" recordCount="30.0">
+                          <SimplePredicate field="Age" operator="lessOrEqual" value="28.5"/>
+                          <ScoreDistribution value="Dead" recordCount="28.5"/>
+                          <ScoreDistribution value="Alive" recordCount="1.5"/>
+                        </Node>
+                        <Node id="85" score="Dead" recordCount="30.0">
+                          <SimplePredicate field="Age" operator="greaterThan" value="28.5"/>
+                          <ScoreDistribution value="Dead" recordCount="23.5"/>
+                          <ScoreDistribution value="Alive" recordCount="6.5"/>
+                          <Node id="86" score="Alive" recordCount="3.5">
+                            <SimplePredicate field="Fare" operator="lessOrEqual" value="10.0"/>
+                            <ScoreDistribution value="Dead" recordCount="1.5"/>
+                            <ScoreDistribution value="Alive" recordCount="2.0"/>
+                          </Node>
+                          <Node id="87" score="Dead" recordCount="26.5">
+                            <SimplePredicate field="Fare" operator="greaterThan" value="10.0"/>
+                            <ScoreDistribution value="Dead" recordCount="22.0"/>
+                            <ScoreDistribution value="Alive" recordCount="4.5"/>
+                            <Node id="88" score="Dead" recordCount="5.096153846153846">
+                              <SimplePredicate field="Age" operator="lessOrEqual" value="30.5"/>
+                              <ScoreDistribution value="Dead" recordCount="5.0"/>
+                              <ScoreDistribution value="Alive" recordCount="0.09615384615384616"/>
+                            </Node>
+                            <Node id="91" score="Dead" recordCount="21.403846153846153">
+                              <SimplePredicate field="Age" operator="greaterThan" value="30.5"/>
+                              <ScoreDistribution value="Dead" recordCount="17.0"/>
+                              <ScoreDistribution value="Alive" recordCount="4.403846153846153"/>
+                              <Node id="92" score="Alive" recordCount="2.0384615384615383">
+                                <SimplePredicate field="Age" operator="lessOrEqual" value="31.5"/>
+                                <ScoreDistribution value="Dead" recordCount="1.0"/>
+                                <ScoreDistribution value="Alive" recordCount="1.0384615384615385"/>
+                              </Node>
+                              <Node id="93" score="Dead" recordCount="19.365384615384617">
+                                <SimplePredicate field="Age" operator="greaterThan" value="31.5"/>
+                                <ScoreDistribution value="Dead" recordCount="16.0"/>
+                                <ScoreDistribution value="Alive" recordCount="3.3653846153846154"/>
+                                <Node id="94" score="Dead" recordCount="16.307692307692307">
+                                  <SimplePredicate field="Age" operator="lessOrEqual" value="57.0"/>
+                                  <ScoreDistribution value="Dead" recordCount="14.0"/>
+                                  <ScoreDistribution value="Alive" recordCount="2.3076923076923075"/>
+                                  <Node id="95" score="Dead" recordCount="12.23076923076923">
+                                    <SimplePredicate field="Age" operator="lessOrEqual" value="45.0"/>
+                                    <ScoreDistribution value="Dead" recordCount="10.0"/>
+                                    <ScoreDistribution value="Alive" recordCount="2.230769230769231"/>
+                                    <Node id="96" score="Dead" recordCount="10.192307692307693">
+                                      <SimplePredicate field="Age" operator="lessOrEqual" value="40.5"/>
+                                      <ScoreDistribution value="Dead" recordCount="9.0"/>
+                                      <ScoreDistribution value="Alive" recordCount="1.1923076923076925"/>
+                                    </Node>
+                                    <Node id="103" score="Alive" recordCount="2.0384615384615383">
+                                      <SimplePredicate field="Age" operator="greaterThan" value="40.5"/>
+                                      <ScoreDistribution value="Dead" recordCount="1.0"/>
+                                      <ScoreDistribution value="Alive" recordCount="1.0384615384615385"/>
+                                    </Node>
+                                  </Node>
+                                  <Node id="104" score="Dead" recordCount="4.076923076923077">
+                                    <SimplePredicate field="Age" operator="greaterThan" value="45.0"/>
+                                    <ScoreDistribution value="Dead" recordCount="4.0"/>
+                                    <ScoreDistribution value="Alive" recordCount="0.07692307692307691"/>
+                                  </Node>
+                                </Node>
+                                <Node id="105" score="Dead" recordCount="3.0576923076923075">
+                                  <SimplePredicate field="Age" operator="greaterThan" value="57.0"/>
+                                  <ScoreDistribution value="Dead" recordCount="2.0"/>
+                                  <ScoreDistribution value="Alive" recordCount="1.0576923076923077"/>
+                                </Node>
+                              </Node>
+                            </Node>
+                          </Node>
+                        </Node>
+                      </Node>
+                    </Node>
+                  </Node>
+                </Node>
+              </Node>
+              <Node id="106" score="Dead" recordCount="44.0">
+                <SimplePredicate field="Fare" operator="greaterThan" value="13.25"/>
+                <ScoreDistribution value="Dead" recordCount="43.0"/>
+                <ScoreDistribution value="Alive" recordCount="1.0"/>
+              </Node>
+            </Node>
+            <Node id="113" score="Dead" recordCount="42.0">
+              <SimplePredicate field="Embarked" operator="equal" value="C"/>
+              <ScoreDistribution value="Dead" recordCount="35.0"/>
+              <ScoreDistribution value="Alive" recordCount="7.0"/>
+              <Node id="114" score="Dead" recordCount="30.0">
+                <SimplePredicate field="Fare" operator="lessOrEqual" value="9.9771"/>
+                <ScoreDistribution value="Dead" recordCount="26.0"/>
+                <ScoreDistribution value="Alive" recordCount="4.0"/>
+              </Node>
+              <Node id="123" score="Dead" recordCount="12.0">
+                <SimplePredicate field="Fare" operator="greaterThan" value="9.9771"/>
+                <ScoreDistribution value="Dead" recordCount="9.0"/>
+                <ScoreDistribution value="Alive" recordCount="3.0"/>
+                <Node id="124" score="Alive" recordCount="3.0">
+                  <SimplePredicate field="Fare" operator="lessOrEqual" value="14.15835"/>
+                  <ScoreDistribution value="Dead" recordCount="1.0"/>
+                  <ScoreDistribution value="Alive" recordCount="2.0"/>
+                </Node>
+                <Node id="125" score="Dead" recordCount="9.0">
+                  <SimplePredicate field="Fare" operator="greaterThan" value="14.15835"/>
+                  <ScoreDistribution value="Dead" recordCount="8.0"/>
+                  <ScoreDistribution value="Alive" recordCount="1.0"/>
+                </Node>
+              </Node>
+            </Node>
+            <Node id="130" score="Dead" recordCount="35.0">
+              <SimplePredicate field="Embarked" operator="equal" value="Q"/>
+              <ScoreDistribution value="Dead" recordCount="32.0"/>
+              <ScoreDistribution value="Alive" recordCount="3.0"/>
+            </Node>
+          </Node>
+          <Node id="137" score="Dead" recordCount="35.0">
+            <SimplePredicate field="Parch" operator="greaterThan" value="0.5"/>
+            <ScoreDistribution value="Dead" recordCount="20.0"/>
+            <ScoreDistribution value="Alive" recordCount="15.0"/>
+            <Node id="138" score="Alive" recordCount="14.677419354838708">
+              <SimplePredicate field="Age" operator="lessOrEqual" value="12.0"/>
+              <ScoreDistribution value="Dead" recordCount="1.838709677419355"/>
+              <ScoreDistribution value="Alive" recordCount="12.838709677419354"/>
+            </Node>
+            <Node id="139" score="Dead" recordCount="20.32258064516129">
+              <SimplePredicate field="Age" operator="greaterThan" value="12.0"/>
+              <ScoreDistribution value="Dead" recordCount="18.161290322580644"/>
+              <ScoreDistribution value="Alive" recordCount="2.161290322580645"/>
+              <Node id="140" score="Dead" recordCount="15.161290322580644">
+                <SimplePredicate field="Embarked" operator="equal" value="S"/>
+                <ScoreDistribution value="Dead" recordCount="15.161290322580644"/>
+                <ScoreDistribution value="Alive" recordCount="0.0"/>
+              </Node>
+              <Node id="141" score="Alive" recordCount="4.161290322580645">
+                <SimplePredicate field="Embarked" operator="equal" value="C"/>
+                <ScoreDistribution value="Dead" recordCount="2.0"/>
+                <ScoreDistribution value="Alive" recordCount="2.161290322580645"/>
+                <Node id="142" score="Dead" recordCount="2.0">
+                  <SimplePredicate field="Fare" operator="lessOrEqual" value="11.237499999999999"/>
+                  <ScoreDistribution value="Dead" recordCount="2.0"/>
+                  <ScoreDistribution value="Alive" recordCount="0.0"/>
+                </Node>
+                <Node id="143" score="Alive" recordCount="2.161290322580645">
+                  <SimplePredicate field="Fare" operator="greaterThan" value="11.237499999999999"/>
+                  <ScoreDistribution value="Dead" recordCount="0.0"/>
+                  <ScoreDistribution value="Alive" recordCount="2.161290322580645"/>
+                </Node>
+              </Node>
+              <Node id="144" score="Dead" recordCount="1.0">
+                <SimplePredicate field="Embarked" operator="equal" value="Q"/>
+                <ScoreDistribution value="Dead" recordCount="1.0"/>
+                <ScoreDistribution value="Alive" recordCount="0.0"/>
+              </Node>
+            </Node>
+          </Node>
+        </Node>
+        <Node id="145" score="Dead" recordCount="162.0">
+          <SimplePredicate field="Fare" operator="greaterThan" value="26.26875"/>
+          <ScoreDistribution value="Dead" recordCount="107.0"/>
+          <ScoreDistribution value="Alive" recordCount="55.0"/>
+          <Node id="146" score="Dead" recordCount="139.0">
+            <SimplePredicate field="SibSp" operator="lessOrEqual" value="2.5"/>
+            <ScoreDistribution value="Dead" recordCount="85.0"/>
+            <ScoreDistribution value="Alive" recordCount="54.0"/>
+            <Node id="147" score="Alive" recordCount="4.0">
+              <SimplePredicate field="Fare" operator="lessOrEqual" value="26.46875"/>
+              <ScoreDistribution value="Dead" recordCount="0.0"/>
+              <ScoreDistribution value="Alive" recordCount="4.0"/>
+            </Node>
+            <Node id="148" score="Dead" recordCount="135.0">
+              <SimplePredicate field="Fare" operator="greaterThan" value="26.46875"/>
+              <ScoreDistribution value="Dead" recordCount="85.0"/>
+              <ScoreDistribution value="Alive" recordCount="50.0"/>
+              <Node id="149" score="Dead" recordCount="133.0">
+                <SimplePredicate field="Fare" operator="lessOrEqual" value="387.6646"/>
+                <ScoreDistribution value="Dead" recordCount="85.0"/>
+                <ScoreDistribution value="Alive" recordCount="48.0"/>
+                <Node id="150" score="Dead" recordCount="127.0">
+                  <SimplePredicate field="Fare" operator="lessOrEqual" value="152.50625000000002"/>
+                  <ScoreDistribution value="Dead" recordCount="79.0"/>
+                  <ScoreDistribution value="Alive" recordCount="48.0"/>
+                  <Node id="151" score="Dead" recordCount="122.0">
+                    <SimplePredicate field="Fare" operator="lessOrEqual" value="116.6375"/>
+                    <ScoreDistribution value="Dead" recordCount="78.0"/>
+                    <ScoreDistribution value="Alive" recordCount="44.0"/>
+                    <Node id="152" score="Dead" recordCount="119.0">
+                      <SimplePredicate field="Parch" operator="lessOrEqual" value="2.5"/>
+                      <ScoreDistribution value="Dead" recordCount="75.0"/>
+                      <ScoreDistribution value="Alive" recordCount="44.0"/>
+                      <Node id="153" score="Dead" recordCount="112.0">
+                        <SimplePredicate field="Pclass" operator="lessOrEqual" value="2.5"/>
+                        <ScoreDistribution value="Dead" recordCount="73.0"/>
+                        <ScoreDistribution value="Alive" recordCount="39.0"/>
+                        <Node id="154" score="Dead" recordCount="36.0">
+                          <SimplePredicate field="Fare" operator="lessOrEqual" value="30.5979"/>
+                          <ScoreDistribution value="Dead" recordCount="20.0"/>
+                          <ScoreDistribution value="Alive" recordCount="16.0"/>
+                          <Node id="155" score="Dead" recordCount="26.0">
+                            <SimplePredicate field="Fare" operator="lessOrEqual" value="29.85"/>
+                            <ScoreDistribution value="Dead" recordCount="17.0"/>
+                            <ScoreDistribution value="Alive" recordCount="9.0"/>
+                          </Node>
+                          <Node id="162" score="Alive" recordCount="10.0">
+                            <SimplePredicate field="Fare" operator="greaterThan" value="29.85"/>
+                            <ScoreDistribution value="Dead" recordCount="3.0"/>
+                            <ScoreDistribution value="Alive" recordCount="7.0"/>
+                          </Node>
+                        </Node>
+                        <Node id="168" score="Dead" recordCount="76.0">
+                          <SimplePredicate field="Fare" operator="greaterThan" value="30.5979"/>
+                          <ScoreDistribution value="Dead" recordCount="53.0"/>
+                          <ScoreDistribution value="Alive" recordCount="23.0"/>
+                          <Node id="169" score="Dead" recordCount="46.0">
+                            <SimplePredicate field="Embarked" operator="equal" value="S"/>
+                            <ScoreDistribution value="Dead" recordCount="35.0"/>
+                            <ScoreDistribution value="Alive" recordCount="11.0"/>
+                            <Node id="170" score="Dead" recordCount="43.0">
+                              <SimplePredicate field="Fare" operator="lessOrEqual" value="80.75415000000001"/>
+                              <ScoreDistribution value="Dead" recordCount="34.0"/>
+                              <ScoreDistribution value="Alive" recordCount="9.0"/>
+                              <Node id="171" score="Dead" recordCount="31.0">
+                                <SimplePredicate field="Fare" operator="lessOrEqual" value="59.0875"/>
+                                <ScoreDistribution value="Dead" recordCount="22.0"/>
+                                <ScoreDistribution value="Alive" recordCount="9.0"/>
+                                <Node id="172" score="Dead" recordCount="17.0">
+                                  <SimplePredicate field="SibSp" operator="lessOrEqual" value="0.5"/>
+                                  <ScoreDistribution value="Dead" recordCount="15.0"/>
+                                  <ScoreDistribution value="Alive" recordCount="2.0"/>
+                                  <Node id="173" score="Dead" recordCount="9.0">
+                                    <SimplePredicate field="Fare" operator="lessOrEqual" value="37.0"/>
+                                    <ScoreDistribution value="Dead" recordCount="7.0"/>
+                                    <ScoreDistribution value="Alive" recordCount="2.0"/>
+                                    <Node id="174" score="Dead" recordCount="6.0">
+                                      <SimplePredicate field="Fare" operator="lessOrEqual" value="35.25"/>
+                                      <ScoreDistribution value="Dead" recordCount="6.0"/>
+                                      <ScoreDistribution value="Alive" recordCount="0.0"/>
+                                    </Node>
+                                    <Node id="175" score="Alive" recordCount="3.0">
+                                      <SimplePredicate field="Fare" operator="greaterThan" value="35.25"/>
+                                      <ScoreDistribution value="Dead" recordCount="1.0"/>
+                                      <ScoreDistribution value="Alive" recordCount="2.0"/>
+                                    </Node>
+                                  </Node>
+                                  <Node id="176" score="Dead" recordCount="8.0">
+                                    <SimplePredicate field="Fare" operator="greaterThan" value="37.0"/>
+                                    <ScoreDistribution value="Dead" recordCount="8.0"/>
+                                    <ScoreDistribution value="Alive" recordCount="0.0"/>
+                                  </Node>
+                                </Node>
+                                <Node id="177" score="Dead" recordCount="14.0">
+                                  <SimplePredicate field="SibSp" operator="greaterThan" value="0.5"/>
+                                  <ScoreDistribution value="Dead" recordCount="7.0"/>
+                                  <ScoreDistribution value="Alive" recordCount="7.0"/>
+                                  <Node id="178" score="Alive" recordCount="12.0">
+                                    <SimplePredicate field="Age" operator="lessOrEqual" value="49.0"/>
+                                    <ScoreDistribution value="Dead" recordCount="5.0"/>
+                                    <ScoreDistribution value="Alive" recordCount="7.0"/>
+                                    <Node id="179" score="Alive" recordCount="2.0">
+                                      <SimplePredicate field="Age" operator="lessOrEqual" value="13.5"/>
+                                      <ScoreDistribution value="Dead" recordCount="0.0"/>
+                                      <ScoreDistribution value="Alive" recordCount="2.0"/>
+                                    </Node>
+                                    <Node id="180" score="Dead" recordCount="10.0">
+                                      <SimplePredicate field="Age" operator="greaterThan" value="13.5"/>
+                                      <ScoreDistribution value="Dead" recordCount="5.0"/>
+                                      <ScoreDistribution value="Alive" recordCount="5.0"/>
+                                      <Node id="181" score="Dead" recordCount="2.0">
+                                        <SimplePredicate field="Age" operator="lessOrEqual" value="23.0"/>
+                                        <ScoreDistribution value="Dead" recordCount="2.0"/>
+                                        <ScoreDistribution value="Alive" recordCount="0.0"/>
+                                      </Node>
+                                      <Node id="182" score="Alive" recordCount="8.0">
+                                        <SimplePredicate field="Age" operator="greaterThan" value="23.0"/>
+                                        <ScoreDistribution value="Dead" recordCount="3.0"/>
+                                        <ScoreDistribution value="Alive" recordCount="5.0"/>
+                                        <Node id="183" score="Dead" recordCount="3.0">
+                                          <SimplePredicate field="Fare" operator="lessOrEqual" value="52.277100000000004"/>
+                                          <ScoreDistribution value="Dead" recordCount="2.0"/>
+                                          <ScoreDistribution value="Alive" recordCount="1.0"/>
+                                        </Node>
+                                        <Node id="184" score="Alive" recordCount="5.0">
+                                          <SimplePredicate field="Fare" operator="greaterThan" value="52.277100000000004"/>
+                                          <ScoreDistribution value="Dead" recordCount="1.0"/>
+                                          <ScoreDistribution value="Alive" recordCount="4.0"/>
+                                        </Node>
+                                      </Node>
+                                    </Node>
+                                  </Node>
+                                  <Node id="187" score="Dead" recordCount="2.0">
+                                    <SimplePredicate field="Age" operator="greaterThan" value="49.0"/>
+                                    <ScoreDistribution value="Dead" recordCount="2.0"/>
+                                    <ScoreDistribution value="Alive" recordCount="0.0"/>
+                                  </Node>
+                                </Node>
+                              </Node>
+                              <Node id="188" score="Dead" recordCount="12.0">
+                                <SimplePredicate field="Fare" operator="greaterThan" value="59.0875"/>
+                                <ScoreDistribution value="Dead" recordCount="12.0"/>
+                                <ScoreDistribution value="Alive" recordCount="0.0"/>
+                              </Node>
+                            </Node>
+                            <Node id="189" score="Alive" recordCount="3.0">
+                              <SimplePredicate field="Fare" operator="greaterThan" value="80.75415000000001"/>
+                              <ScoreDistribution value="Dead" recordCount="1.0"/>
+                              <ScoreDistribution value="Alive" recordCount="2.0"/>
+                            </Node>
+                          </Node>
+                          <Node id="190" score="Dead" recordCount="29.0">
+                            <SimplePredicate field="Embarked" operator="equal" value="C"/>
+                            <ScoreDistribution value="Dead" recordCount="17.0"/>
+                            <ScoreDistribution value="Alive" recordCount="12.0"/>
+                            <Node id="191" score="Dead" recordCount="2.0">
+                              <SimplePredicate field="Fare" operator="lessOrEqual" value="30.8479"/>
+                              <ScoreDistribution value="Dead" recordCount="2.0"/>
+                              <ScoreDistribution value="Alive" recordCount="0.0"/>
+                            </Node>
+                            <Node id="192" score="Dead" recordCount="27.0">
+                              <SimplePredicate field="Fare" operator="greaterThan" value="30.8479"/>
+                              <ScoreDistribution value="Dead" recordCount="15.0"/>
+                              <ScoreDistribution value="Alive" recordCount="12.0"/>
+                              <Node id="193" score="Alive" recordCount="23.884615384615387">
+                                <SimplePredicate field="Age" operator="lessOrEqual" value="62.5"/>
+                                <ScoreDistribution value="Dead" recordCount="11.884615384615385"/>
+                                <ScoreDistribution value="Alive" recordCount="12.0"/>
+                                <Node id="194" score="Alive" recordCount="18.884615384615387">
+                                  <SimplePredicate field="Fare" operator="lessOrEqual" value="98.7521"/>
+                                  <ScoreDistribution value="Dead" recordCount="7.884615384615385"/>
+                                  <ScoreDistribution value="Alive" recordCount="11.0"/>
+                                  <Node id="195" score="Alive" recordCount="2.0">
+                                    <SimplePredicate field="Fare" operator="lessOrEqual" value="36.2521"/>
+                                    <ScoreDistribution value="Dead" recordCount="0.0"/>
+                                    <ScoreDistribution value="Alive" recordCount="2.0"/>
+                                  </Node>
+                                  <Node id="196" score="Alive" recordCount="16.884615384615387">
+                                    <SimplePredicate field="Fare" operator="greaterThan" value="36.2521"/>
+                                    <ScoreDistribution value="Dead" recordCount="7.884615384615385"/>
+                                    <ScoreDistribution value="Alive" recordCount="9.0"/>
+                                    <Node id="197" score="Dead" recordCount="4.884615384615385">
+                                      <SimplePredicate field="Fare" operator="lessOrEqual" value="48.51045"/>
+                                      <ScoreDistribution value="Dead" recordCount="3.8846153846153846"/>
+                                      <ScoreDistribution value="Alive" recordCount="1.0"/>
+                                    </Node>
+                                    <Node id="200" score="Alive" recordCount="12.0">
+                                      <SimplePredicate field="Fare" operator="greaterThan" value="48.51045"/>
+                                      <ScoreDistribution value="Dead" recordCount="4.0"/>
+                                      <ScoreDistribution value="Alive" recordCount="8.0"/>
+                                      <Node id="201" score="Dead" recordCount="5.0">
+                                        <SimplePredicate field="SibSp" operator="lessOrEqual" value="0.5"/>
+                                        <ScoreDistribution value="Dead" recordCount="3.0"/>
+                                        <ScoreDistribution value="Alive" recordCount="2.0"/>
+                                        <Node id="202" score="Alive" recordCount="3.0">
+                                          <SimplePredicate field="Fare" operator="lessOrEqual" value="77.9646"/>
+                                          <ScoreDistribution value="Dead" recordCount="1.0"/>
+                                          <ScoreDistribution value="Alive" recordCount="2.0"/>
+                                        </Node>
+                                        <Node id="203" score="Dead" recordCount="2.0">
+                                          <SimplePredicate field="Fare" operator="greaterThan" value="77.9646"/>
+                                          <ScoreDistribution value="Dead" recordCount="2.0"/>
+                                          <ScoreDistribution value="Alive" recordCount="0.0"/>
+                                        </Node>
+                                      </Node>
+                                      <Node id="204" score="Alive" recordCount="7.0">
+                                        <SimplePredicate field="SibSp" operator="greaterThan" value="0.5"/>
+                                        <ScoreDistribution value="Dead" recordCount="1.0"/>
+                                        <ScoreDistribution value="Alive" recordCount="6.0"/>
+                                      </Node>
+                                    </Node>
+                                  </Node>
+                                </Node>
+                                <Node id="207" score="Dead" recordCount="5.0">
+                                  <SimplePredicate field="Fare" operator="greaterThan" value="98.7521"/>
+                                  <ScoreDistribution value="Dead" recordCount="4.0"/>
+                                  <ScoreDistribution value="Alive" recordCount="1.0"/>
+                                </Node>
+                              </Node>
+                              <Node id="210" score="Dead" recordCount="3.1153846153846154">
+                                <SimplePredicate field="Age" operator="greaterThan" value="62.5"/>
+                                <ScoreDistribution value="Dead" recordCount="3.1153846153846154"/>
+                                <ScoreDistribution value="Alive" recordCount="0.0"/>
+                              </Node>
+                            </Node>
+                          </Node>
+                          <Node id="211" score="Dead" recordCount="1.0">
+                            <SimplePredicate field="Embarked" operator="equal" value="Q"/>
+                            <ScoreDistribution value="Dead" recordCount="1.0"/>
+                            <ScoreDistribution value="Alive" recordCount="0.0"/>
+                          </Node>
+                        </Node>
+                      </Node>
+                      <Node id="212" score="Alive" recordCount="7.0">
+                        <SimplePredicate field="Pclass" operator="greaterThan" value="2.5"/>
+                        <ScoreDistribution value="Dead" recordCount="2.0"/>
+                        <ScoreDistribution value="Alive" recordCount="5.0"/>
+                      </Node>
+                    </Node>
+                    <Node id="213" score="Dead" recordCount="3.0">
+                      <SimplePredicate field="Parch" operator="greaterThan" value="2.5"/>
+                      <ScoreDistribution value="Dead" recordCount="3.0"/>
+                      <ScoreDistribution value="Alive" recordCount="0.0"/>
+                    </Node>
+                  </Node>
+                  <Node id="214" score="Alive" recordCount="5.0">
+                    <SimplePredicate field="Fare" operator="greaterThan" value="116.6375"/>
+                    <ScoreDistribution value="Dead" recordCount="1.0"/>
+                    <ScoreDistribution value="Alive" recordCount="4.0"/>
+                  </Node>
+                </Node>
+                <Node id="217" score="Dead" recordCount="6.0">
+                  <SimplePredicate field="Fare" operator="greaterThan" value="152.50625000000002"/>
+                  <ScoreDistribution value="Dead" recordCount="6.0"/>
+                  <ScoreDistribution value="Alive" recordCount="0.0"/>
+                </Node>
+              </Node>
+              <Node id="218" score="Alive" recordCount="2.0">
+                <SimplePredicate field="Fare" operator="greaterThan" value="387.6646"/>
+                <ScoreDistribution value="Dead" recordCount="0.0"/>
+                <ScoreDistribution value="Alive" recordCount="2.0"/>
+              </Node>
+            </Node>
+          </Node>
+          <Node id="219" score="Dead" recordCount="23.0">
+            <SimplePredicate field="SibSp" operator="greaterThan" value="2.5"/>
+            <ScoreDistribution value="Dead" recordCount="22.0"/>
+            <ScoreDistribution value="Alive" recordCount="1.0"/>
+          </Node>
+        </Node>
+      </Node>
+      <Node id="224" score="Alive" recordCount="314.0">
+        <SimplePredicate field="Sex" operator="equal" value="female"/>
+        <ScoreDistribution value="Dead" recordCount="81.0"/>
+        <ScoreDistribution value="Alive" recordCount="233.0"/>
+        <Node id="225" score="Alive" recordCount="170.0">
+          <SimplePredicate field="Pclass" operator="lessOrEqual" value="2.5"/>
+          <ScoreDistribution value="Dead" recordCount="9.0"/>
+          <ScoreDistribution value="Alive" recordCount="161.0"/>
+          <Node id="226" score="Alive" recordCount="70.0">
+            <SimplePredicate field="Fare" operator="lessOrEqual" value="28.85625"/>
+            <ScoreDistribution value="Dead" recordCount="7.0"/>
+            <ScoreDistribution value="Alive" recordCount="63.0"/>
+            <Node id="227" score="Alive" recordCount="67.0">
+              <SimplePredicate field="Fare" operator="lessOrEqual" value="27.7354"/>
+              <ScoreDistribution value="Dead" recordCount="6.0"/>
+              <ScoreDistribution value="Alive" recordCount="61.0"/>
+              <Node id="228" score="Alive" recordCount="47.0">
+                <SimplePredicate field="SibSp" operator="lessOrEqual" value="0.5"/>
+                <ScoreDistribution value="Dead" recordCount="3.0"/>
+                <ScoreDistribution value="Alive" recordCount="44.0"/>
+              </Node>
+              <Node id="242" score="Alive" recordCount="20.0">
+                <SimplePredicate field="SibSp" operator="greaterThan" value="0.5"/>
+                <ScoreDistribution value="Dead" recordCount="3.0"/>
+                <ScoreDistribution value="Alive" recordCount="17.0"/>
+                <Node id="243" score="Alive" recordCount="6.0">
+                  <SimplePredicate field="Age" operator="lessOrEqual" value="25.0"/>
+                  <ScoreDistribution value="Dead" recordCount="0.0"/>
+                  <ScoreDistribution value="Alive" recordCount="6.0"/>
+                </Node>
+                <Node id="244" score="Alive" recordCount="14.0">
+                  <SimplePredicate field="Age" operator="greaterThan" value="25.0"/>
+                  <ScoreDistribution value="Dead" recordCount="3.0"/>
+                  <ScoreDistribution value="Alive" recordCount="11.0"/>
+                  <Node id="245" score="Dead" recordCount="3.0">
+                    <SimplePredicate field="Age" operator="lessOrEqual" value="27.5"/>
+                    <ScoreDistribution value="Dead" recordCount="2.0"/>
+                    <ScoreDistribution value="Alive" recordCount="1.0"/>
+                  </Node>
+                  <Node id="246" score="Alive" recordCount="11.0">
+                    <SimplePredicate field="Age" operator="greaterThan" value="27.5"/>
+                    <ScoreDistribution value="Dead" recordCount="1.0"/>
+                    <ScoreDistribution value="Alive" recordCount="10.0"/>
+                  </Node>
+                </Node>
+              </Node>
+            </Node>
+            <Node id="249" score="Alive" recordCount="3.0">
+              <SimplePredicate field="Fare" operator="greaterThan" value="27.7354"/>
+              <ScoreDistribution value="Dead" recordCount="1.0"/>
+              <ScoreDistribution value="Alive" recordCount="2.0"/>
+            </Node>
+          </Node>
+          <Node id="250" score="Alive" recordCount="100.0">
+            <SimplePredicate field="Fare" operator="greaterThan" value="28.85625"/>
+            <ScoreDistribution value="Dead" recordCount="2.0"/>
+            <ScoreDistribution value="Alive" recordCount="98.0"/>
+            <Node id="251" score="Alive" recordCount="84.0">
+              <SimplePredicate field="Parch" operator="lessOrEqual" value="1.5"/>
+              <ScoreDistribution value="Dead" recordCount="0.0"/>
+              <ScoreDistribution value="Alive" recordCount="84.0"/>
+            </Node>
+            <Node id="252" score="Alive" recordCount="16.0">
+              <SimplePredicate field="Parch" operator="greaterThan" value="1.5"/>
+              <ScoreDistribution value="Dead" recordCount="2.0"/>
+              <ScoreDistribution value="Alive" recordCount="14.0"/>
+              <Node id="253" score="Alive" recordCount="9.0">
+                <SimplePredicate field="Fare" operator="lessOrEqual" value="135.775"/>
+                <ScoreDistribution value="Dead" recordCount="0.0"/>
+                <ScoreDistribution value="Alive" recordCount="9.0"/>
+              </Node>
+              <Node id="254" score="Alive" recordCount="7.0">
+                <SimplePredicate field="Fare" operator="greaterThan" value="135.775"/>
+                <ScoreDistribution value="Dead" recordCount="2.0"/>
+                <ScoreDistribution value="Alive" recordCount="5.0"/>
+                <Node id="255" score="Dead" recordCount="2.0">
+                  <SimplePredicate field="Fare" operator="lessOrEqual" value="158.20835"/>
+                  <ScoreDistribution value="Dead" recordCount="2.0"/>
+                  <ScoreDistribution value="Alive" recordCount="0.0"/>
+                </Node>
+                <Node id="256" score="Alive" recordCount="5.0">
+                  <SimplePredicate field="Fare" operator="greaterThan" value="158.20835"/>
+                  <ScoreDistribution value="Dead" recordCount="0.0"/>
+                  <ScoreDistribution value="Alive" recordCount="5.0"/>
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </Node>
+        <Node id="257" score="Dead" recordCount="144.0">
+          <SimplePredicate field="Pclass" operator="greaterThan" value="2.5"/>
+          <ScoreDistribution value="Dead" recordCount="72.0"/>
+          <ScoreDistribution value="Alive" recordCount="72.0"/>
+          <Node id="258" score="Alive" recordCount="117.0">
+            <SimplePredicate field="Fare" operator="lessOrEqual" value="23.35"/>
+            <ScoreDistribution value="Dead" recordCount="48.0"/>
+            <ScoreDistribution value="Alive" recordCount="69.0"/>
+            <Node id="259" score="Dead" recordCount="63.0">
+              <SimplePredicate field="Embarked" operator="equal" value="S"/>
+              <ScoreDistribution value="Dead" recordCount="32.0"/>
+              <ScoreDistribution value="Alive" recordCount="31.0"/>
+              <Node id="260" score="Dead" recordCount="37.0">
+                <SimplePredicate field="Fare" operator="lessOrEqual" value="10.825"/>
+                <ScoreDistribution value="Dead" recordCount="22.0"/>
+                <ScoreDistribution value="Alive" recordCount="15.0"/>
+                <Node id="261" score="Alive" recordCount="20.0">
+                  <SimplePredicate field="Fare" operator="lessOrEqual" value="7.987500000000001"/>
+                  <ScoreDistribution value="Dead" recordCount="9.0"/>
+                  <ScoreDistribution value="Alive" recordCount="11.0"/>
+                  <Node id="262" score="Alive" recordCount="16.842105263157894">
+                    <SimplePredicate field="Age" operator="lessOrEqual" value="27.5"/>
+                    <ScoreDistribution value="Dead" recordCount="5.842105263157895"/>
+                    <ScoreDistribution value="Alive" recordCount="11.0"/>
+                    <Node id="263" score="Alive" recordCount="5.842105263157895">
+                      <SimplePredicate field="Fare" operator="lessOrEqual" value="7.7625"/>
+                      <ScoreDistribution value="Dead" recordCount="0.8421052631578947"/>
+                      <ScoreDistribution value="Alive" recordCount="5.0"/>
+                    </Node>
+                    <Node id="266" score="Alive" recordCount="11.0">
+                      <SimplePredicate field="Fare" operator="greaterThan" value="7.7625"/>
+                      <ScoreDistribution value="Dead" recordCount="5.0"/>
+                      <ScoreDistribution value="Alive" recordCount="6.0"/>
+                      <Node id="267" score="Dead" recordCount="8.0">
+                        <SimplePredicate field="Age" operator="lessOrEqual" value="25.5"/>
+                        <ScoreDistribution value="Dead" recordCount="5.0"/>
+                        <ScoreDistribution value="Alive" recordCount="3.0"/>
+                        <Node id="268" score="Alive" recordCount="5.0">
+                          <SimplePredicate field="Age" operator="lessOrEqual" value="22.5"/>
+                          <ScoreDistribution value="Dead" recordCount="2.0"/>
+                          <ScoreDistribution value="Alive" recordCount="3.0"/>
+                          <Node id="269" score="Dead" recordCount="3.0">
+                            <SimplePredicate field="SibSp" operator="lessOrEqual" value="0.5"/>
+                            <ScoreDistribution value="Dead" recordCount="2.0"/>
+                            <ScoreDistribution value="Alive" recordCount="1.0"/>
+                          </Node>
+                          <Node id="270" score="Alive" recordCount="2.0">
+                            <SimplePredicate field="SibSp" operator="greaterThan" value="0.5"/>
+                            <ScoreDistribution value="Dead" recordCount="0.0"/>
+                            <ScoreDistribution value="Alive" recordCount="2.0"/>
+                          </Node>
+                        </Node>
+                        <Node id="271" score="Dead" recordCount="3.0">
+                          <SimplePredicate field="Age" operator="greaterThan" value="22.5"/>
+                          <ScoreDistribution value="Dead" recordCount="3.0"/>
+                          <ScoreDistribution value="Alive" recordCount="0.0"/>
+                        </Node>
+                      </Node>
+                      <Node id="272" score="Alive" recordCount="3.0">
+                        <SimplePredicate field="Age" operator="greaterThan" value="25.5"/>
+                        <ScoreDistribution value="Dead" recordCount="0.0"/>
+                        <ScoreDistribution value="Alive" recordCount="3.0"/>
+                      </Node>
+                    </Node>
+                  </Node>
+                  <Node id="273" score="Dead" recordCount="3.1578947368421053">
+                    <SimplePredicate field="Age" operator="greaterThan" value="27.5"/>
+                    <ScoreDistribution value="Dead" recordCount="3.1578947368421053"/>
+                    <ScoreDistribution value="Alive" recordCount="0.0"/>
+                  </Node>
+                </Node>
+                <Node id="274" score="Dead" recordCount="17.0">
+                  <SimplePredicate field="Fare" operator="greaterThan" value="7.987500000000001"/>
+                  <ScoreDistribution value="Dead" recordCount="13.0"/>
+                  <ScoreDistribution value="Alive" recordCount="4.0"/>
+                  <Node id="275" score="Dead" recordCount="4.0">
+                    <SimplePredicate field="Fare" operator="lessOrEqual" value="8.672899999999998"/>
+                    <ScoreDistribution value="Dead" recordCount="4.0"/>
+                    <ScoreDistribution value="Alive" recordCount="0.0"/>
+                  </Node>
+                  <Node id="276" score="Dead" recordCount="13.0">
+                    <SimplePredicate field="Fare" operator="greaterThan" value="8.672899999999998"/>
+                    <ScoreDistribution value="Dead" recordCount="9.0"/>
+                    <ScoreDistribution value="Alive" recordCount="4.0"/>
+                    <Node id="277" score="Dead" recordCount="9.0">
+                      <SimplePredicate field="SibSp" operator="lessOrEqual" value="0.5"/>
+                      <ScoreDistribution value="Dead" recordCount="5.0"/>
+                      <ScoreDistribution value="Alive" recordCount="4.0"/>
+                      <Node id="278" score="Alive" recordCount="7.0">
+                        <SimplePredicate field="Fare" operator="lessOrEqual" value="10.1521"/>
+                        <ScoreDistribution value="Dead" recordCount="3.0"/>
+                        <ScoreDistribution value="Alive" recordCount="4.0"/>
+                        <Node id="279" score="Alive" recordCount="2.0">
+                          <SimplePredicate field="Age" operator="lessOrEqual" value="20.0"/>
+                          <ScoreDistribution value="Dead" recordCount="0.0"/>
+                          <ScoreDistribution value="Alive" recordCount="2.0"/>
+                        </Node>
+                        <Node id="280" score="Dead" recordCount="5.0">
+                          <SimplePredicate field="Age" operator="greaterThan" value="20.0"/>
+                          <ScoreDistribution value="Dead" recordCount="3.0"/>
+                          <ScoreDistribution value="Alive" recordCount="2.0"/>
+                          <Node id="281" score="Dead" recordCount="2.0">
+                            <SimplePredicate field="Age" operator="lessOrEqual" value="27.5"/>
+                            <ScoreDistribution value="Dead" recordCount="2.0"/>
+                            <ScoreDistribution value="Alive" recordCount="0.0"/>
+                          </Node>
+                          <Node id="282" score="Alive" recordCount="3.0">
+                            <SimplePredicate field="Age" operator="greaterThan" value="27.5"/>
+                            <ScoreDistribution value="Dead" recordCount="1.0"/>
+                            <ScoreDistribution value="Alive" recordCount="2.0"/>
+                          </Node>
+                        </Node>
+                      </Node>
+                      <Node id="283" score="Dead" recordCount="2.0">
+                        <SimplePredicate field="Fare" operator="greaterThan" value="10.1521"/>
+                        <ScoreDistribution value="Dead" recordCount="2.0"/>
+                        <ScoreDistribution value="Alive" recordCount="0.0"/>
+                      </Node>
+                    </Node>
+                    <Node id="284" score="Dead" recordCount="4.0">
+                      <SimplePredicate field="SibSp" operator="greaterThan" value="0.5"/>
+                      <ScoreDistribution value="Dead" recordCount="4.0"/>
+                      <ScoreDistribution value="Alive" recordCount="0.0"/>
+                    </Node>
+                  </Node>
+                </Node>
+              </Node>
+              <Node id="285" score="Alive" recordCount="26.0">
+                <SimplePredicate field="Fare" operator="greaterThan" value="10.825"/>
+                <ScoreDistribution value="Dead" recordCount="10.0"/>
+                <ScoreDistribution value="Alive" recordCount="16.0"/>
+                <Node id="286" score="Alive" recordCount="16.0">
+                  <SimplePredicate field="Fare" operator="lessOrEqual" value="17.6"/>
+                  <ScoreDistribution value="Dead" recordCount="3.0"/>
+                  <ScoreDistribution value="Alive" recordCount="13.0"/>
+                  <Node id="287" score="Alive" recordCount="6.0">
+                    <SimplePredicate field="Fare" operator="lessOrEqual" value="13.4375"/>
+                    <ScoreDistribution value="Dead" recordCount="0.0"/>
+                    <ScoreDistribution value="Alive" recordCount="6.0"/>
+                  </Node>
+                  <Node id="288" score="Alive" recordCount="10.0">
+                    <SimplePredicate field="Fare" operator="greaterThan" value="13.4375"/>
+                    <ScoreDistribution value="Dead" recordCount="3.0"/>
+                    <ScoreDistribution value="Alive" recordCount="7.0"/>
+                    <Node id="289" score="Dead" recordCount="2.0">
+                      <SimplePredicate field="Fare" operator="lessOrEqual" value="15.175"/>
+                      <ScoreDistribution value="Dead" recordCount="2.0"/>
+                      <ScoreDistribution value="Alive" recordCount="0.0"/>
+                    </Node>
+                    <Node id="290" score="Alive" recordCount="8.0">
+                      <SimplePredicate field="Fare" operator="greaterThan" value="15.175"/>
+                      <ScoreDistribution value="Dead" recordCount="1.0"/>
+                      <ScoreDistribution value="Alive" recordCount="7.0"/>
+                    </Node>
+                  </Node>
+                </Node>
+                <Node id="295" score="Dead" recordCount="10.0">
+                  <SimplePredicate field="Fare" operator="greaterThan" value="17.6"/>
+                  <ScoreDistribution value="Dead" recordCount="7.0"/>
+                  <ScoreDistribution value="Alive" recordCount="3.0"/>
+                  <Node id="296" score="Dead" recordCount="4.0">
+                    <SimplePredicate field="Fare" operator="lessOrEqual" value="20.23125"/>
+                    <ScoreDistribution value="Dead" recordCount="4.0"/>
+                    <ScoreDistribution value="Alive" recordCount="0.0"/>
+                  </Node>
+                  <Node id="297" score="Dead" recordCount="6.0">
+                    <SimplePredicate field="Fare" operator="greaterThan" value="20.23125"/>
+                    <ScoreDistribution value="Dead" recordCount="3.0"/>
+                    <ScoreDistribution value="Alive" recordCount="3.0"/>
+                    <Node id="298" score="Alive" recordCount="2.0">
+                      <SimplePredicate field="Fare" operator="lessOrEqual" value="20.799999999999997"/>
+                      <ScoreDistribution value="Dead" recordCount="0.0"/>
+                      <ScoreDistribution value="Alive" recordCount="2.0"/>
+                    </Node>
+                    <Node id="299" score="Dead" recordCount="4.0">
+                      <SimplePredicate field="Fare" operator="greaterThan" value="20.799999999999997"/>
+                      <ScoreDistribution value="Dead" recordCount="3.0"/>
+                      <ScoreDistribution value="Alive" recordCount="1.0"/>
+                    </Node>
+                  </Node>
+                </Node>
+              </Node>
+            </Node>
+            <Node id="302" score="Alive" recordCount="23.0">
+              <SimplePredicate field="Embarked" operator="equal" value="C"/>
+              <ScoreDistribution value="Dead" recordCount="8.0"/>
+              <ScoreDistribution value="Alive" recordCount="15.0"/>
+              <Node id="303" score="Dead" recordCount="16.0">
+                <SimplePredicate field="Fare" operator="lessOrEqual" value="15.493749999999999"/>
+                <ScoreDistribution value="Dead" recordCount="8.0"/>
+                <ScoreDistribution value="Alive" recordCount="8.0"/>
+                <Node id="304" score="Alive" recordCount="6.0">
+                  <SimplePredicate field="Fare" operator="lessOrEqual" value="13.93545"/>
+                  <ScoreDistribution value="Dead" recordCount="0.0"/>
+                  <ScoreDistribution value="Alive" recordCount="6.0"/>
+                </Node>
+                <Node id="305" score="Dead" recordCount="10.0">
+                  <SimplePredicate field="Fare" operator="greaterThan" value="13.93545"/>
+                  <ScoreDistribution value="Dead" recordCount="8.0"/>
+                  <ScoreDistribution value="Alive" recordCount="2.0"/>
+                </Node>
+              </Node>
+              <Node id="312" score="Alive" recordCount="7.0">
+                <SimplePredicate field="Fare" operator="greaterThan" value="15.493749999999999"/>
+                <ScoreDistribution value="Dead" recordCount="0.0"/>
+                <ScoreDistribution value="Alive" recordCount="7.0"/>
+              </Node>
+            </Node>
+            <Node id="313" score="Alive" recordCount="31.0">
+              <SimplePredicate field="Embarked" operator="equal" value="Q"/>
+              <ScoreDistribution value="Dead" recordCount="8.0"/>
+              <ScoreDistribution value="Alive" recordCount="23.0"/>
+              <Node id="314" score="Dead" recordCount="2.0">
+                <SimplePredicate field="Fare" operator="lessOrEqual" value="7.68125"/>
+                <ScoreDistribution value="Dead" recordCount="2.0"/>
+                <ScoreDistribution value="Alive" recordCount="0.0"/>
+              </Node>
+              <Node id="315" score="Alive" recordCount="29.0">
+                <SimplePredicate field="Fare" operator="greaterThan" value="7.68125"/>
+                <ScoreDistribution value="Dead" recordCount="6.0"/>
+                <ScoreDistribution value="Alive" recordCount="23.0"/>
+                <Node id="316" score="Alive" recordCount="27.0">
+                  <SimplePredicate field="Parch" operator="lessOrEqual" value="0.5"/>
+                  <ScoreDistribution value="Dead" recordCount="4.0"/>
+                  <ScoreDistribution value="Alive" recordCount="23.0"/>
+                </Node>
+                <Node id="325" score="Dead" recordCount="2.0">
+                  <SimplePredicate field="Parch" operator="greaterThan" value="0.5"/>
+                  <ScoreDistribution value="Dead" recordCount="2.0"/>
+                  <ScoreDistribution value="Alive" recordCount="0.0"/>
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+          <Node id="326" score="Dead" recordCount="27.0">
+            <SimplePredicate field="Fare" operator="greaterThan" value="23.35"/>
+            <ScoreDistribution value="Dead" recordCount="24.0"/>
+            <ScoreDistribution value="Alive" recordCount="3.0"/>
+            <Node id="327" score="Dead" recordCount="25.0">
+              <SimplePredicate field="Embarked" operator="equal" value="S"/>
+              <ScoreDistribution value="Dead" recordCount="23.0"/>
+              <ScoreDistribution value="Alive" recordCount="2.0"/>
+              <Node id="328" score="Dead" recordCount="14.0">
+                <SimplePredicate field="Fare" operator="lessOrEqual" value="31.331249999999997"/>
+                <ScoreDistribution value="Dead" recordCount="14.0"/>
+                <ScoreDistribution value="Alive" recordCount="0.0"/>
+              </Node>
+              <Node id="329" score="Dead" recordCount="11.0">
+                <SimplePredicate field="Fare" operator="greaterThan" value="31.331249999999997"/>
+                <ScoreDistribution value="Dead" recordCount="9.0"/>
+                <ScoreDistribution value="Alive" recordCount="2.0"/>
+                <Node id="330" score="Alive" recordCount="2.0">
+                  <SimplePredicate field="Fare" operator="lessOrEqual" value="32.88125"/>
+                  <ScoreDistribution value="Dead" recordCount="0.0"/>
+                  <ScoreDistribution value="Alive" recordCount="2.0"/>
+                </Node>
+                <Node id="331" score="Dead" recordCount="9.0">
+                  <SimplePredicate field="Fare" operator="greaterThan" value="32.88125"/>
+                  <ScoreDistribution value="Dead" recordCount="9.0"/>
+                  <ScoreDistribution value="Alive" recordCount="0.0"/>
+                </Node>
+              </Node>
+            </Node>
+            <Node id="333" score="Dead" recordCount="2.0">
+              <SimplePredicate field="Embarked" operator="equal" value="Q"/>
+              <ScoreDistribution value="Dead" recordCount="1.0"/>
+              <ScoreDistribution value="Alive" recordCount="1.0"/>
+            </Node>
+          </Node>
+        </Node>
+      </Node>
+    </Node>
+  </TreeModel>
+</PMML>
